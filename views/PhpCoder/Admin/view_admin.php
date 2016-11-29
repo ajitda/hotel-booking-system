@@ -17,6 +17,8 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
+$oneData = $obj->view();
+
 ?>
 <!doctype html>
 <html lang="en"><head>
@@ -26,6 +28,7 @@ if(!$status) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.css">
@@ -57,7 +60,9 @@ if(!$status) {
             })
             $('body').addClass('theme-' + color);
         }
+
         $('[data-popover="true"]').popover({html: true});
+
     });
 </script>
 <style type="text/css">
@@ -79,7 +84,6 @@ if(!$status) {
         $('#main-menu').append(uls.clone());
     });
 </script>
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -108,7 +112,7 @@ if(!$status) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index1.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
+        <a class="" href="index.php"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
         <ul id="main-menu" class="nav navbar-nav navbar-right">
@@ -117,14 +121,13 @@ if(!$status) {
                     <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleUser->first_name $singleUser->last_name"?>
                     <i class="fa fa-caret-down"></i>
                 </a>
-
                 <ul class="dropdown-menu">
-                    <li><a href="Profile">My Account</a></li>
+                    <li><a href="./">My Account</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="Profile">Users</a></li>
-                    <li><a href="Profile">Security</a></li>
-                    <li><a tabindex="-1" href="Profile">Payments</a></li>
+                    <li><a href="./">Users</a></li>
+                    <li><a href="./">Security</a></li>
+                    <li><a tabindex="-1" href="./">Payments</a></li>
                     <li class="divider"></li>
                     <li><a tabindex="-1" href="Authentication/logout.php">Logout</a></li>
                 </ul>
@@ -144,7 +147,7 @@ if(!$status) {
                 <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
                 <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
-                <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
+                <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
             </ul></li>
         <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
@@ -177,87 +180,32 @@ if(!$status) {
         <h1 class="page-title">Dashboard</h1>
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a> </li>
-            <li class=""><a href="index.php">Dashboard</a></li>
-            <li class="active">Create Admin</li>
+            <li class="active">Dashboard</li>
         </ul>
 
     </div>
     <div class="main-content">
-        <div class="row">
-            <div class="col-sm-1 middle-border"></div>
-            <div class="col-sm-1"></div>
-
-            <div class="col-sm-5">
-
-                <div class="form-box" style="margin-top: 0%">
-                    <div class="form-top">
-                        <dv>
-
-                            <?php  if(isset($_SESSION['message']) )if($_SESSION['message']!=""){ ?>
-
-                                <div  id="message" class="form button"   style="font-size: smaller  " >
-                                    <center>
-                                        <?php if((array_key_exists('message',$_SESSION)&& (!empty($_SESSION['message'])))) {
-                                            echo "&nbsp;".Message::message();
-                                        }
-                                        Message::message(NULL);
-                                        ?></center>
-                                </div>
-                            <?php } ?>
-                        </dv>
-                        <div class="form-top-left">
-                            <h3>Sign up now</h3>
-                            <p>Fill in the form below to get instant access:</p>
-                        </div>
-                        <div class="form-top-right">
-                            <i class="fa fa-pencil"></i>
-                        </div>
-                    </div>
-                    <div class="form-bottom">
-                        <form role="form" action="Profile/admin_registration.php" method="post" class="registration-form">
-                            <div class="form-group">
-                                <label class="sr-only" for="form-first_name">First name</label>
-                                <input type="text" name="first_name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-last-name">Last name</label>
-                                <input type="text" name="last_name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-email">Email</label>
-                                <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-email">Phone</label>
-                                <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="address">Address</label>
-                                <input type="text" name="address" placeholder="Address..." class="form-address form-control" id="form-address">
-                            </div>
-                            <button type="submit" class="btn">Sign me up!</button>
-                        </form>
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="one-content" style="padding: 10px;">
+                        <h1><?php echo "Admin Name : ". $oneData->first_name ." ". $oneData->last_name; ?></h1>
+                        <h3><?php echo "Email : ". $oneData->email; ?></h3>
+                        <h3><?php echo "Mobile : ". $oneData->phone; ?></h3>
+                        <h3><?php echo "Address : ". $oneData->address; ?></h3>
                     </div>
                 </div>
-
             </div>
         </div>
+    <footer>
+        <hr>
 
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
     </div>
 </div>
-        <footer>
-            <hr>
-
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
 </div>
 
 
@@ -269,9 +217,5 @@ if(!$status) {
     });
 </script>
 
-
-<script>
-    $('.alert').slideDown("slow").delay(5000).slideUp("slow");
-</script>
 
 </body></html>

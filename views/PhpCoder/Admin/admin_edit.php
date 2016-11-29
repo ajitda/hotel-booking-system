@@ -8,7 +8,7 @@ use App\BITM\PhpCoder\Utility\Utility;
 
 $obj= new Admin();
 $obj->prepare($_SESSION);
-$singleUser = $obj->view();
+$singleAdmin = $obj->view();
 
 $auth= new Auth();
 $status = $auth->prepare($_SESSION)->logged_in();
@@ -19,7 +19,8 @@ if(!$status) {
 }
 ?>
 <!doctype html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <title>Bootstrap Admin</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -37,11 +38,8 @@ if(!$status) {
             $(".knob").knob();
         });
     </script>
-
-
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/css/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
-
 </head>
 <body class=" theme-blue">
 
@@ -108,13 +106,13 @@ if(!$status) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index1.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
+        <a class="" href="index.php"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
         <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleUser->first_name $singleUser->last_name"?>
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleAdmin->first_name $singleAdmin->last_name"?>
                     <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -190,23 +188,24 @@ if(!$status) {
             <div class="col-sm-5">
 
                 <div class="form-box" style="margin-top: 0%">
+                    <div>
+
+                        <?php  if(isset($_SESSION['message']) )if($_SESSION['message']!=""){ ?>
+
+                            <div  id="message" class="form button"   style="font-size: smaller;" >
+                                <center>
+                                    <?php if((array_key_exists('message',$_SESSION)&& (!empty($_SESSION['message'])))) {
+                                        echo "&nbsp;".Message::message();
+                                    }
+                                    Message::message(NULL);
+                                    ?></center>
+                            </div>
+                        <?php } ?>
+                    </div>
                     <div class="form-top">
-                        <dv>
 
-                            <?php  if(isset($_SESSION['message']) )if($_SESSION['message']!=""){ ?>
-
-                                <div  id="message" class="form button"   style="font-size: smaller  " >
-                                    <center>
-                                        <?php if((array_key_exists('message',$_SESSION)&& (!empty($_SESSION['message'])))) {
-                                            echo "&nbsp;".Message::message();
-                                        }
-                                        Message::message(NULL);
-                                        ?></center>
-                                </div>
-                            <?php } ?>
-                        </dv>
                         <div class="form-top-left">
-                            <h3>Sign up now</h3>
+                            <h3>Update Admin Details</h3>
                             <p>Fill in the form below to get instant access:</p>
                         </div>
                         <div class="form-top-right">
@@ -214,33 +213,29 @@ if(!$status) {
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="Profile/admin_registration.php" method="post" class="registration-form">
+                        <form role="form" action="admin_update.php" method="post" class="registration-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first_name">First name</label>
-                                <input type="text" name="first_name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                                <input type="text" name="first_name" value="<?php echo $singleAdmin->first_name; ?>" class="form-first-name form-control" id="form-first-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Last name</label>
-                                <input type="text" name="last_name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                                <input type="text" name="last_name" value="<?php echo $singleAdmin->last_name; ?>" class="form-last-name form-control" id="form-last-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
-                                <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                <input type="text" name="email" value="<?php echo $singleAdmin->email; ?>" class="form-email form-control" id="form-email" disabled>
                             </div>
 
                             <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-                            </div>
-                            <div class="form-group">
                                 <label class="sr-only" for="form-email">Phone</label>
-                                <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone">
+                                <input type="text" name="phone" value="<?php echo $singleAdmin->phone; ?>" class="form-phone form-control" id="form-phone" >
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="address">Address</label>
-                                <input type="text" name="address" placeholder="Address..." class="form-address form-control" id="form-address">
+                                <input type="text" name="address" value="<?php echo $singleAdmin->address; ?>" class="form-address form-control" id="form-address">
                             </div>
-                            <button type="submit" class="btn">Sign me up!</button>
+                            <button type="submit" class="btn">Update Admin!</button>
                         </form>
                     </div>
                 </div>
@@ -250,14 +245,14 @@ if(!$status) {
 
     </div>
 </div>
-        <footer>
-            <hr>
+<footer>
+    <hr>
 
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
+    <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+</footer>
+</div>
 </div>
 
 

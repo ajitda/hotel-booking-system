@@ -152,10 +152,138 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
             $STH->setFetchMode(PDO::FETCH_OBJ);
         else
             $STH->setFetchMode(PDO::FETCH_ASSOC);
-
         $arrAllData = $STH->fetchAll();
         return $arrAllData;
+    }//end of view admin
+
+    public function delete(){
+        $sql='DELETE FROM birthday WHERE id ='.$this->id;
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute();
+        Utility::redirect('index.php');
     }
+    public function trash($fetchMode ='ASSOC'){
+        $query = "UPDATE birthday SET is_deleted=NOW() Where id=".$this->id;
+        $stmt = $this->DBH->prepare($query);
+        $stmt->execute();
+        Utility::redirect('index.php');
+    }
+    public function trashed($fetchMode='ASSOC'){
+        $sql = "SELECT * from birthday where is_deleted <> 'No' ";
+        $STH = $this->DBH->query($sql);
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode,'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $arrAllData  = $STH->fetchAll();
+        return $arrAllData;
+    }
+
+    public function recover(){
+        $sql = "Update birthday SET is_deleted='No' where id=".$this->id;
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute();
+        Utility::redirect('trashed.php');
+    }// end of recover();
+
+    public function indexPaginator($page=0,$itemsPerPage=3){
+
+        $start = (($page-1) * $itemsPerPage);
+
+        $sql = "SELECT * from birthday  WHERE is_deleted = 'No' LIMIT $start,$itemsPerPage";
+
+        $STH = $this->DBH->query($sql);
+
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $arrSomeData  = $STH->fetchAll();
+        return $arrSomeData;
+
+    }// end of indexPaginator();
+    public function trashedPaginator($page=0,$itemsPerPage=3){
+
+        $start = (($page-1) * $itemsPerPage);
+
+        $sql = "SELECT * from birthday  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
+
+        $STH = $this->DBH->query($sql);
+
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $arrSomeData  = $STH->fetchAll();
+        return $arrSomeData;
+    }// end of trashedPaginator();
+
+    public function search($requestArray){
+        $sql = "";
+        if( isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND (`name` LIKE '%".$requestArray['search']."%' OR `birthday` LIKE '%".$requestArray['search']."%')";
+        if(isset($requestArray['byTitle']) && !isset($requestArray['byAuthor']) ) $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND `name` LIKE '%".$requestArray['search']."%'";
+        if(!isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND `birthday` LIKE '%".$requestArray['search']."%'";
+
+        $STH  = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData = $STH->fetchAll();
+        return $allData;
+    }// end of search()
+
+    public function getAllKeywords()
+    {
+        $_allKeywords = array();
+//        $WordsArr = array();
+        $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No'";
+
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        // for each search field block start
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+            $_allKeywords[] = trim($oneData->name);
+        }
+
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+            $eachString= strip_tags($oneData->name);
+            $eachString=trim( $eachString);
+            $eachString= preg_replace( "/\r|\n/", " ", $eachString);
+            $eachString= str_replace("&nbsp;","",  $eachString);
+            $WordsArr = explode(" ", $eachString);
+
+            foreach ($WordsArr as $eachWord){
+                $_allKeywords[] = trim($eachWord);
+            }
+        }
+        // for each search field block end
+
+        // for each search field block start
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+            $_allKeywords[] = trim($oneData->birthday);
+        }
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+
+            $eachString= strip_tags($oneData->birthday);
+            $eachString=trim( $eachString);
+            $eachString= preg_replace( "/\r|\n/", " ", $eachString);
+            $eachString= str_replace("&nbsp;","",  $eachString);
+            $WordsArr = explode(" ", $eachString);
+
+            foreach ($WordsArr as $eachWord){
+                $_allKeywords[] = trim($eachWord);
+            }
+        }
+        // for each search field block end
+        return array_unique($_allKeywords);
+    }// get all keywords
+
 
 }
 
