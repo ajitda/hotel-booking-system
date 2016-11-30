@@ -152,7 +152,6 @@ $serial = 1;
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
                 <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>

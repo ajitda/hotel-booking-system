@@ -146,7 +146,7 @@ if(!$status) {
                 <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
 
                 <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="#"><span class="fa fa-caret-right"></span> Room Management</a></li>
+                <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Room Management</a></li>
 
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
