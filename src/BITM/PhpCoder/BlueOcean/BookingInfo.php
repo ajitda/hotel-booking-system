@@ -7,6 +7,7 @@ use App\BITM\PhpCoder\Model\Database as DB;
 
 class BookingInfo extends DB{
     public $table="booking_info";
+    public $customerName="";
     public $bookingNumber="";
     public $packageInfo="";
     public $checkIn="";
@@ -23,6 +24,9 @@ class BookingInfo extends DB{
     }
 
     public function prepare($data=array()){
+        if(array_key_exists('customer_name',$data)){
+            $this->customerName=$data['customer_name'];
+        }
         if(array_key_exists('booking_number',$data)){
             $this->bookingNumber=$data['booking_number'];
         }
@@ -65,12 +69,12 @@ class BookingInfo extends DB{
 //        var_dump($this);
 //        die();
 
-        $query="INSERT INTO `booking_info` (`booking_number`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`)
-VALUES (:bookingNumber, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :children, :person, :price)";
+        $query="INSERT INTO `booking_info` (`customer_name`,`booking_number`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`)
+VALUES (:customerName, :bookingNumber, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :children, :person, :price)";
 
         $result=$this->conn->prepare($query);
 
-        $result->execute(array(':bookingNumber'=>$this->bookingNumber,':packageInfo'=>$this->packageInfo,':checkIn'=>$this->checkIn, ':checkOut'=>$this->checkOut,':rooms'=>$this->rooms,':adult'=>$this->adult,':children'=>$this->children,            ':person'=>$this->person,':price'=>$this->price));
+        $result->execute(array(':customerName'=>$this->customerName,':bookingNumber'=>$this->bookingNumber,':packageInfo'=>$this->packageInfo,':checkIn'=>$this->checkIn, ':checkOut'=>$this->checkOut,':rooms'=>$this->rooms,':adult'=>$this->adult,':children'=>$this->children,':person'=>$this->person,':price'=>$this->price));
 
         if ($result) {
             Message::message("
@@ -86,6 +90,19 @@ VALUES (:bookingNumber, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :chil
             return Utility::redirect($_SERVER['HTTP_REFERER']);
         }
     }
+
+    public function index(){
+        $query="SELECT * from `booking_info` (`customer_name`,`booking_number`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`)
+VALUES (:customerName, :bookingNumber, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :children, :person, :price,)";
+
+        $result=$this->conn->prepare($query);
+
+        $result->execute(array(':customerName'=>$this->customerName,':bookingNumber'=>$this->bookingNumber,':packageInfo'=>$this->packageInfo,':checkIn'=>$this->checkIn, ':checkOut'=>$this->checkOut,':rooms'=>$this->rooms,':adult'=>$this->adult,':children'=>$this->children,':person'=>$this->person,':price'=>$this->price));
+
+        $row=$result->fetchAll();
+        return $row;
+    }
+
 }
 
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2016 at 01:08 PM
+-- Generation Time: Nov 30, 2016 at 06:11 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -54,6 +54,7 @@ INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`, `phon
 --
 
 CREATE TABLE `booking_info` (
+  `customer_name` varchar(200) NOT NULL,
   `package_info` varchar(100) NOT NULL,
   `check_in` date NOT NULL,
   `check_out` date NOT NULL,
@@ -62,17 +63,17 @@ CREATE TABLE `booking_info` (
   `children` int(100) NOT NULL,
   `person` int(100) NOT NULL,
   `price` int(100) NOT NULL,
-  `is_verified` varchar(11) NOT NULL DEFAULT 'No',
-  `id` int(100) NOT NULL,
-  `booking_number` int(100) NOT NULL
+  `booking_number` int(100) NOT NULL,
+  `is_deleted` varchar(11) NOT NULL DEFAULT 'No',
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking_info`
 --
 
-INSERT INTO `booking_info` (`package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`, `is_verified`, `id`, `booking_number`) VALUES
-('Family', '2016-11-01', '2016-11-02', 1, 1, 1, 1, 1, 'No', 1, 1);
+INSERT INTO `booking_info` (`customer_name`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`, `booking_number`, `is_deleted`, `id`) VALUES
+('ali bhai', 'Shopping', '2016-11-01', '2016-11-02', 1, 1, 1, 2, 1, 0, 'No', 5);
 
 -- --------------------------------------------------------
 
@@ -116,6 +117,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `booking_info`
+--
+ALTER TABLE `booking_info`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -130,6 +137,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `booking_info`
+--
+ALTER TABLE `booking_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
