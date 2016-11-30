@@ -17,9 +17,6 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
-$allData = $obj->index1("obj");
-
-$serial = 1;
 ?>
 <!doctype html>
 <html lang="en"><head>
@@ -29,7 +26,6 @@ $serial = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.css">
@@ -61,9 +57,7 @@ $serial = 1;
             })
             $('body').addClass('theme-' + color);
         }
-
         $('[data-popover="true"]').popover({html: true});
-
     });
 </script>
 <style type="text/css">
@@ -125,12 +119,12 @@ $serial = 1;
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="./">My Account</a></li>
+                    <li><a href="Profile">My Account</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="./">Users</a></li>
-                    <li><a href="./">Security</a></li>
-                    <li><a tabindex="-1" href="./">Payments</a></li>
+                    <li><a href="Profile">Users</a></li>
+                    <li><a href="Profile">Security</a></li>
+                    <li><a tabindex="-1" href="Profile">Payments</a></li>
                     <li class="divider"></li>
                     <li><a tabindex="-1" href="Authentication/logout.php">Logout</a></li>
                 </ul>
@@ -150,7 +144,7 @@ $serial = 1;
                 <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
                 <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
-                <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
+                <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
             </ul></li>
         <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
@@ -183,59 +177,87 @@ $serial = 1;
         <h1 class="page-title">Dashboard</h1>
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a> </li>
-            <li class="active">Dashboard</li>
+            <li class=""><a href="index.php">Dashboard</a></li>
+            <li class="active">Create Admin</li>
         </ul>
 
     </div>
     <div class="main-content">
-        <div class="panel panel-default">
-            <div class="row">
-                <div class="col-md-12">
-                <?php
+        <div class="row">
+            <div class="col-sm-1 middle-border"></div>
+            <div class="col-sm-1"></div>
 
-                $serial=1;
+            <div class="col-sm-5">
 
-                echo "<table class='table table-bordered table-striped' border='5px' >";
+                <div class="form-box" style="margin-top: 0%">
+                    <div class="form-top">
+                        <dv>
 
-                echo "<th> serial </th>";
-                echo "<th> ID </th>";
-                echo "<th> First Name </th>";
-                echo "<th> Last Name </th>";
-                echo "<th> Email </th>";
-                echo "<th> Action </th>";
+                            <?php  if(isset($_SESSION['message']) )if($_SESSION['message']!=""){ ?>
 
+                                <div  id="message" class="form button"   style="font-size: smaller  " >
+                                    <center>
+                                        <?php if((array_key_exists('message',$_SESSION)&& (!empty($_SESSION['message'])))) {
+                                            echo "&nbsp;".Message::message();
+                                        }
+                                        Message::message(NULL);
+                                        ?></center>
+                                </div>
+                            <?php } ?>
+                        </dv>
+                        <div class="form-top-left">
+                            <h3>Add Room</h3>
+                            <p>Fill in the form below to get instant access:</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" action="" method="post" class="registration-form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-first_name">Room No:</label>
+                                <input type="text" name="room_no" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-last-name">Type of Room</label>
+                                <input type="text" name="room_name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Room Size</label>
+                                <input type="text" name="room_size" placeholder="Email..." class="form-email form-control" id="form-email">
+                            </div>
 
-                foreach($allData as $oneData){      ########### Traversing $someData is Required for pagination  #############
-                    echo "<tr style='height: 40px'>";
-                    echo "<td>".$serial."</td>";
-
-                    echo "<td>".$oneData->id ."</td>";
-                    echo "<td>".$oneData->first_name ."</td>";
-                    echo "<td>".$oneData->last_name ."</td>";
-                    echo "<td>".$oneData->email ."</td>";
-                    echo "<td>";
-                    echo "<a href='view_admin.php?id=$oneData->id'><button class='btn btn-info'>View</button></a> ";
-                    echo "<a href='admin_edit.php?id=$oneData->id'><button class='btn btn-primary'>Edit</button></a> ";
-                    echo "</td>";
-                    echo "</tr>";
-                    $serial++;
-                }
-                echo "</table>";
-
-                ?>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Phone</label>
+                                <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="address">Address</label>
+                                <input type="text" name="address" placeholder="Address..." class="form-address form-control" id="form-address">
+                            </div>
+                            <button type="submit" class="btn">Sign me up!</button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
+        </div>
+
     </div>
 </div>
+<footer>
+    <hr>
 
-        <footer>
-            <hr>
-
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
+    <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+</footer>
+</div>
 </div>
 
 
@@ -247,5 +269,9 @@ $serial = 1;
     });
 </script>
 
+
+<script>
+    $('.alert').slideDown("slow").delay(5000).slideUp("slow");
+</script>
 
 </body></html>

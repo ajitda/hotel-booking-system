@@ -127,8 +127,8 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
 
         $result=$this->conn->prepare($query);
 
-        $result->execute(array(':firstName'=>$this->firstName,':lastName'=>$this->lastName,':email'=>$this->email,':phone'=>$this->phone,
- ':address'=>$this->address,':email_token'=>$this->email_token));
+        $result->execute(array(':firstName'=>$this->firstName,':lastName'=>$this->lastName,':phone'=>$this->phone,
+ ':address'=>$this->address,':email'=>$this->email));
 
         if($result){
             Message::message("
@@ -139,7 +139,7 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
         else {
             echo "Error";
         }
-        return Utility::redirect($_SERVER['HTTP_REFERER']);
+        return Utility::redirect('admin_list.php');
     }
 
 
