@@ -8,10 +8,14 @@ echo Message::message();
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,12 +80,16 @@ echo Message::message();
                     delux - 1 room 10000 taka, business - 20000 taka, . . . .
 
                     <div class="form-group">
-                        Check In <input type="date" name="check_in"  class="form-check_in form-control" id="form-check_in">
+
+                        <!--Check In <input type="text"  name="check_in"  class="form-check_in form-control" id="datepicker"> -->
+                    Check In: <input name="check_in" id="dateField" type="date" min="2014-01-01" disabled>
                     </div>
 
 
                     <div class="form-group">
-                        Check Out <input type="date" name="check_out"  class="form-check_out form-control" id="form-check_out">
+
+                        <!--Check In <input type="text"  name="check_in"  class="form-check_in form-control" id="datepicker"> -->
+                        Check Out: <input name="check_out" id="dateField1" type="date" min="2014-01-01" disabled>
                     </div>
 
                     <div class="form-group">
@@ -132,6 +140,7 @@ echo Message::message();
 </div>
 
 <!-- Javascript -->
+
 <script src="../../../../resource/assets/js/jquery-1.11.1.min.js"></script>
 <script src="../../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../../../../resource/assets/js/jquery.backstretch.min.js"></script>
@@ -144,3 +153,39 @@ echo Message::message();
 </body>
 
 </html>
+
+<script>
+    var input = document.getElementById("dateField");
+    var today = new Date();
+    var day = today.getDate();
+    // Set month to string to add leading 0
+    var mon = new String(today.getMonth()+1); //January is 0!
+    var yr = today.getFullYear();
+
+    if(mon.length < 2) { mon = "0" + mon; }
+
+    var date = new String( yr + '-' + mon + '-' + day );
+
+    input.disabled = false;
+    input.setAttribute('min', date);
+
+</script>
+
+<script>
+    var input = document.getElementById("dateField1");
+    var today = new Date();
+    var day = today.getDate();
+    // Set month to string to add leading 0
+    var mon = new String(today.getMonth()+1); //January is 0!
+    var yr = today.getFullYear();
+
+    if(mon.length < 2) { mon = "0" + mon; }
+
+    var date = new String( yr + '-' + mon + '-' + day );
+
+    input.disabled = false;
+    input.setAttribute('min', date);
+
+</script>
+
+
