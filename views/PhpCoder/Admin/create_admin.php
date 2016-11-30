@@ -233,7 +233,7 @@ if(!$status) {
                                 <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-email">Phone</label>
+                                <label class="sr-only" for="form-phone">Phone</label>
                                 <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone">
                             </div>
                             <div class="form-group">
