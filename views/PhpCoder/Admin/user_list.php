@@ -227,7 +227,7 @@ $serial = 1;
 
                         echo "<td>";
                         echo "<a href='view_single_user.php?email=$oneData->email'><button class='btn btn-info'>View</button></a> ";
-                        echo "<a href='admin_edit.php?id=$oneData->id'><button class='btn btn-primary'>Delete</button></a> ";
+                        echo "<a href='delete_user.php?id=$oneData->id'><button class='btn btn-primary'>Delete</button></a> ";
                         echo "<a href=''><button class='btn btn-primary'>Email</button></a> ";
                         echo "</td>";
                         echo "</tr>";
