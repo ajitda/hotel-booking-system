@@ -1,14 +1,19 @@
 <?php
+
+//var_dump($_GET); die;
 if(!isset($_SESSION) )session_start();
 include_once('../../../vendor/autoload.php');
 use App\BITM\PhpCoder\Admin\Admin;
 use App\BITM\PhpCoder\Admin\Auth;
+use App\BITM\PhpCoder\User\User;
+
 use App\BITM\PhpCoder\Message\Message;
 use App\BITM\PhpCoder\Utility\Utility;
 
 $obj= new Admin();
 $obj->prepare($_SESSION);
-$singleUser = $obj->view();
+$singleAdmin = $obj->view();
+
 
 $auth= new Auth();
 $status = $auth->prepare($_SESSION)->logged_in();
@@ -17,9 +22,11 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
-$allData = $obj->index1("obj");
 
-$serial = 1;
+$objUser = new User();
+//var_dump($_POST); die;
+$objUser->prepare($_GET);
+$singleUser = $objUser->view();
 ?>
 <!doctype html>
 <html lang="en"><head>
@@ -85,7 +92,6 @@ $serial = 1;
         $('#main-menu').append(uls.clone());
     });
 </script>
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -114,16 +120,15 @@ $serial = 1;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index1.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
+        <a class="" href="index.php"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
         <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleUser->first_name $singleUser->last_name"?>
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleAdmin->first_name $singleAdmin->last_name"?>
                     <i class="fa fa-caret-down"></i>
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a href="./">My Account</a></li>
                     <li class="divider"></li>
@@ -191,51 +196,29 @@ $serial = 1;
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
-                <?php
-
-                $serial=1;
-
-                echo "<table class='table table-bordered table-striped' border='5px' >";
-
-                echo "<th> serial </th>";
-                echo "<th> ID </th>";
-                echo "<th> First Name </th>";
-                echo "<th> Last Name </th>";
-                echo "<th> Email </th>";
-                echo "<th> Action </th>";
-
-
-                foreach($allData as $oneData){      ########### Traversing $someData is Required for pagination  #############
-                    echo "<tr style='height: 40px'>";
-                    echo "<td>".$serial."</td>";
-
-                    echo "<td>".$oneData->id ."</td>";
-                    echo "<td>".$oneData->first_name ."</td>";
-                    echo "<td>".$oneData->last_name ."</td>";
-                    echo "<td>".$oneData->email ."</td>";
-                    echo "<td>";
-                    echo "<a href='view_admin.php?email=$oneData->email'><button class='btn btn-info'>View</button></a> ";
-                    echo "<a href='admin_edit.php?email=$oneData->email'><button class='btn btn-primary'>Edit</button></a> ";
-                    echo "</td>";
-                    echo "</tr>";
-                    $serial++;
-                }
-                echo "</table>";
-
-                ?>
+                    <div class="one-content" style="padding: 10px;">
+                        <?php // var_dump($singleUser); die;?>
+                        <h1><?php echo "Name : ". $singleUser->first_name ." ". $singleUser->last_name; ?></h1>
+                        <h3><?php echo "Email : ". $singleUser->email; ?></h3>
+                        <h3><?php echo "Mobile : ". $singleUser->phone; ?></h3>
+                        <h3><?php echo "Address : ". $singleUser->address; ?></h3>
+                        <h3><?php echo "Gender : ". $singleUser->gender; ?></h3>
+                        <h3><?php echo "City : ". $singleUser->city; ?></h3>
+                        <h3><?php echo "Country : ". $singleUser->country; ?></h3>
+                        <h3><?php echo "Nationality : ". $singleUser->nationality; ?></h3>
+                        <h3><?php echo "NID/Birthcertificate : ". $singleUser->nid_birthcertificate; ?></h3>
+                    </div>
                 </div>
             </div>
-    </div>
-</div>
-
+        </div>
         <footer>
             <hr>
-
             <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
             <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
             <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
         </footer>
     </div>
+</div>
 </div>
 
 

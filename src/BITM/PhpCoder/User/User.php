@@ -123,7 +123,13 @@ VALUES (:firstName, :lastName, :gender, :city, :country, :nationality, :nid_birt
     }
 
     public function view(){
+
+        //var_dump($this);die;
+
         $query="SELECT * FROM `users` WHERE `users`.`email` =:email";
+
+
+
         $result=$this->conn->prepare($query);
         $result->execute(array(':email'=>$this->email));
         $row=$result->fetch(PDO::FETCH_OBJ);
@@ -149,7 +155,6 @@ VALUES (:firstName, :lastName, :gender, :city, :country, :nationality, :nid_birt
     }
 
     public function update(){
-
         $query="UPDATE `users` SET `first_name`=:firstName, `last_name` =:lastName , `gender`, `city`, `country`, `nationality`, `nid_birthcertificate`,  `email` =:email, `phone` = :phone,
  `address` = :address  WHERE `users`.`email` = :email";
 
@@ -168,6 +173,19 @@ VALUES (:firstName, :lastName, :gender, :city, :country, :nationality, :nid_birt
             echo "Error";
         }
         return Utility::redirect($_SERVER['HTTP_REFERER']);
+    }
+
+
+    //viewing all user date in admin
+    public function viewAllUser($fetchMode = 'ASSOC'){
+        $STH = $this->conn->query("SELECT * from users WHERE email_verified='Yes'");
+         $fetchMode = strtoupper($fetchMode);
+        if (substr_count($fetchMode, 'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $arrAllData = $STH->fetchAll();
+        return $arrAllData;
     }
 
 }

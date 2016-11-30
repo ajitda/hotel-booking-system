@@ -2,6 +2,7 @@
 if(!isset($_SESSION) )session_start();
 include_once('../../../vendor/autoload.php');
 use App\BITM\PhpCoder\Admin\Admin;
+use App\BITM\PhpCoder\User\User;
 use App\BITM\PhpCoder\Admin\Auth;
 use App\BITM\PhpCoder\Message\Message;
 use App\BITM\PhpCoder\Utility\Utility;
@@ -10,6 +11,9 @@ $obj= new Admin();
 $obj->prepare($_SESSION);
 $singleUser = $obj->view();
 
+$objUser = new User();
+$allUserData = $objUser->viewAllUser("obj");
+
 $auth= new Auth();
 $status = $auth->prepare($_SESSION)->logged_in();
 
@@ -17,6 +21,8 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
+
+
 $allData = $obj->index1("obj");
 
 $serial = 1;
@@ -61,9 +67,7 @@ $serial = 1;
             })
             $('body').addClass('theme-' + color);
         }
-
         $('[data-popover="true"]').popover({html: true});
-
     });
 </script>
 <style type="text/css">
@@ -191,51 +195,60 @@ $serial = 1;
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
-                <?php
+                    <?php
 
-                $serial=1;
+                    $serial=1;
 
-                echo "<table class='table table-bordered table-striped' border='5px' >";
+                    echo "<table class='table table-bordered table-striped' border='5px' >";
 
-                echo "<th> serial </th>";
-                echo "<th> ID </th>";
-                echo "<th> First Name </th>";
-                echo "<th> Last Name </th>";
-                echo "<th> Email </th>";
-                echo "<th> Action </th>";
+                    echo "<th> serial </th>";
+                    echo "<th> ID </th>";
+                    echo "<th> Full Name </th>";
+                    echo "<th> Email </th>";
+                    echo "<th> Phone </th>";
+                    echo "<th> Address </th>";
+                    echo "<th> Gender </th>";
+                    echo "<th> Nationality </th>";
+                    echo "<th> Action </th>";
 
 
-                foreach($allData as $oneData){      ########### Traversing $someData is Required for pagination  #############
-                    echo "<tr style='height: 40px'>";
-                    echo "<td>".$serial."</td>";
+                    foreach($allUserData as $oneData){      ########### Traversing $someData is Required for pagination  #############
+                        echo "<tr style='height: 40px'>";
+                        echo "<td>".$serial."</td>";
 
-                    echo "<td>".$oneData->id ."</td>";
-                    echo "<td>".$oneData->first_name ."</td>";
-                    echo "<td>".$oneData->last_name ."</td>";
-                    echo "<td>".$oneData->email ."</td>";
-                    echo "<td>";
-                    echo "<a href='view_admin.php?email=$oneData->email'><button class='btn btn-info'>View</button></a> ";
-                    echo "<a href='admin_edit.php?email=$oneData->email'><button class='btn btn-primary'>Edit</button></a> ";
-                    echo "</td>";
-                    echo "</tr>";
-                    $serial++;
-                }
-                echo "</table>";
+                        echo "<td>".$oneData->id ."</td>";
+                        echo "<td>".$oneData->first_name ." ".$oneData->last_name."</td>";
+                        echo "<td>".$oneData->email ."</td>";
+                        echo "<td>".$oneData->phone ."</td>";
+                        echo "<td>".$oneData->address ."</td>";
+                        echo "<td>".$oneData->gender ."</td>";
 
-                ?>
+                        echo "<td>".$oneData->nationality ."</td>";
+
+                        echo "<td>";
+                        echo "<a href='view_single_user.php?email=$oneData->email'><button class='btn btn-info'>View</button></a> ";
+                        echo "<a href='admin_edit.php?id=$oneData->id'><button class='btn btn-primary'>Delete</button></a> ";
+                        echo "<a href=''><button class='btn btn-primary'>Email</button></a> ";
+                        echo "</td>";
+                        echo "</tr>";
+                        $serial++;
+                    }
+                    echo "</table>";
+
+                    ?>
                 </div>
             </div>
+        </div>
     </div>
+
+    <footer>
+        <hr>
+
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
 </div>
-
-        <footer>
-            <hr>
-
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
 </div>
 
 
