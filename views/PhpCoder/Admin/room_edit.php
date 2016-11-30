@@ -5,6 +5,7 @@ use App\BITM\PhpCoder\Admin\Admin;
 use App\BITM\PhpCoder\Admin\Auth;
 use App\BITM\PhpCoder\Message\Message;
 use App\BITM\PhpCoder\Utility\Utility;
+use App\BITM\PhpCoder\Room\Room;
 
 $obj= new Admin();
 $obj->prepare($_SESSION);
@@ -17,6 +18,10 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
+
+$singleRoom=new Room();
+$singleRoom->prepare($_GET);
+$oneRoom = $singleRoom->view("obj");
 ?>
 <!doctype html>
 <html lang="en"><head>
@@ -141,13 +146,10 @@ if(!$status) {
         <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
-<<<<<<< HEAD
                 <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
                 <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
-=======
                 <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
                 <li ><a href="#"><span class="fa fa-caret-right"></span> Room Management</a></li>
->>>>>>> 7ddbf8dd77975ae6dc9895509e0449e33311436c
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
@@ -219,39 +221,49 @@ if(!$status) {
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="room_store.php" method="post" class="registration-form" enctype="multipart/form-data">
+                        <form role="form" action="room_update.php" method="post" class="registration-form" enctype="multipart/form-data">
+
+                            <input type="hidden" name="id" value="<?php echo $oneRoom->id; ?>">
+
                             <div class="form-group">
+
                                 <label class="sr-only" for="form-first_name">Room No:</label>
-                                <input type="text" name="room_no" placeholder="Enter your Room No..." class="form-first-name form-control" id="form-first-name">
+                                <input type="text" name="room_no" value="<?php echo $oneRoom->room_no; ?>" class="form-first-name form-control" id="form-first-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Type of Room</label>
-                                <input type="text" name="room_name" placeholder="Enter Type of Room..." class="form-last-name form-control" id="form-last-name">
+                                <input type="text" name="room_name" value="<?php echo $oneRoom->room_name; ?>" class="form-last-name form-control" id="form-last-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-room-size">Room Size</label>
-                                <input type="text" name="room_size" placeholder="Enter Room Size..." class="form-email form-control" id="form-email">
+                                <input type="text" name="room_size" value="<?php echo $oneRoom->room_size; ?>" class="form-email form-control" id="form-email">
                             </div>
 
                             <div class="form-group">
-                                <label class="sr-only" for="form-bed_no">Bed No</label>
-                                <input type="radio" name="bed_no" value="1">01
-                                <input type="radio" name="bed_no" value="2">02
-                                <input type="radio" name="bed_no" value="3">03
-                                <input type="radio" name="bed_no" value="4">04
+                                <label class="sr-only" for="form-bed">Bed No</label>
+                                <input type="radio" name="bed_no" value="1"<?php if($oneRoom->bed_no==1) echo 'checked'; ?>>01
+                                <input type="radio" name="bed_no" value="2"<?php if($oneRoom->bed_no==2) echo 'checked'; ?>>02
+                                <input type="radio" name="bed_no" value="3"<?php if($oneRoom->bed_no==3) echo 'checked'; ?>>03
+                                <input type="radio" name="bed_no" value="4"<?php if($oneRoom->bed_no==4) echo 'checked'; ?>>04
 
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Rate</label>
-                                <input type="number" name="rate" placeholder="Enter Room Price..." class="form-phone form-control" id="form-phone">
+                                <input type="number" name="rate" value="<?php echo $oneRoom->rate; ?>" class="form-phone form-control" id="form-phone">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="address">Description</label>
-                                <input type="text" name="description" placeholder="Enter Room Description..." class="form-address form-control" id="form-address">
+                                <input type="text" name="description" value="<?php echo $oneRoom->description; ?>" class="form-address form-control" id="form-address">
                             </div>
                             <div class="form-group">
                                 <label for="form-author">Select your Room Picuture</label>
-                                <input type="file" name="fileUpload"  class="form-author form-control" id="form-author">
+                                <input type="file" name="fileUpload" value="<?php echo $oneRoom->file_path; ?>" class="form-author form-control" id="form-author">
+                                <?php echo "<img src='../../../resource/assets/img/room/".$oneRoom->file_path."' >"; ?>
+                            </div>
+                            <div>
+
+
+
                             </div>
 
                             <button type="submit" class="btn">Create Room!</button>

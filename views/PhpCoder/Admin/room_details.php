@@ -5,7 +5,7 @@ use App\BITM\PhpCoder\Admin\Admin;
 use App\BITM\PhpCoder\Admin\Auth;
 use App\BITM\PhpCoder\Message\Message;
 use App\BITM\PhpCoder\Utility\Utility;
-
+use App\BITM\PhpCoder\Room\Room;
 $obj= new Admin();
 $obj->prepare($_SESSION);
 $singleUser = $obj->view();
@@ -17,6 +17,12 @@ if(!$status) {
     Utility::redirect('Profile/login.php');
     return;
 }
+$oneData = $obj->view();
+
+$objRoom=new Room();
+$objRoom->prepare($_GET);
+$singleRoom=$objRoom->view();
+
 ?>
 <!doctype html>
 <html lang="en"><head>
@@ -26,6 +32,7 @@ if(!$status) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.css">
@@ -57,7 +64,9 @@ if(!$status) {
             })
             $('body').addClass('theme-' + color);
         }
+
         $('[data-popover="true"]').popover({html: true});
+
     });
 </script>
 <style type="text/css">
@@ -79,7 +88,6 @@ if(!$status) {
         $('#main-menu').append(uls.clone());
     });
 </script>
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -108,7 +116,7 @@ if(!$status) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index1.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
+        <a class="" href="index.php"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Blue Ocean Admin Panel</span></a></div>
 
     <div class="navbar-collapse collapse" style="height: 1px;">
         <ul id="main-menu" class="nav navbar-nav navbar-right">
@@ -117,14 +125,13 @@ if(!$status) {
                     <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$singleUser->first_name $singleUser->last_name"?>
                     <i class="fa fa-caret-down"></i>
                 </a>
-
                 <ul class="dropdown-menu">
-                    <li><a href="Profile">My Account</a></li>
+                    <li><a href="./">My Account</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Admin Panel</li>
-                    <li><a href="Profile">Users</a></li>
-                    <li><a href="Profile">Security</a></li>
-                    <li><a tabindex="-1" href="Profile">Payments</a></li>
+                    <li><a href="./">Users</a></li>
+                    <li><a href="./">Security</a></li>
+                    <li><a tabindex="-1" href="./">Payments</a></li>
                     <li class="divider"></li>
                     <li><a tabindex="-1" href="Authentication/logout.php">Logout</a></li>
                 </ul>
@@ -141,15 +148,10 @@ if(!$status) {
         <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
-<<<<<<< HEAD
                 <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
                 <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
-=======
-                <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="#"><span class="fa fa-caret-right"></span> Room Management</a></li>
->>>>>>> 7ddbf8dd77975ae6dc9895509e0449e33311436c
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
-                <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
+                <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
             </ul></li>
         <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
@@ -182,95 +184,42 @@ if(!$status) {
         <h1 class="page-title">Dashboard</h1>
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a> </li>
-            <li class=""><a href="index.php">Dashboard</a></li>
-            <li class="active">Create Admin</li>
+            <li class="active">Dashboard</li>
         </ul>
 
     </div>
     <div class="main-content">
-        <div class="row">
-            <div class="col-sm-1 middle-border"></div>
-            <div class="col-sm-1"></div>
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-6">
+                `<table class="table table-bordered table-striped">
+                    <?php
 
-            <div class="col-sm-5">
+                    echo "<tr>"."<th>Room No: </th>"."<td>".$singleRoom->room_no."</td>"."</tr>";
+                    echo "<tr>"."<th>Room Name: </th>"."<td>".$singleRoom->room_name."</td>"."</tr>";
+                    echo "<tr>"."<th>Room Size: </th>"."<td>".$singleRoom->room_size."</td>"."</tr>";
+                    echo "<tr>"."<th>Number of Bed: </th>"."<td>".$singleRoom->bed_no."</td>"."</tr>";
+                    echo "<tr>"."<th>Rate: </th>"."<td>".$singleRoom->rate."</td>"."</tr>";
+                    echo "<tr>"."<th>Description: </th>"."<td>".$singleRoom->description."</td>"."</tr>";
+                    echo "<tr>"."<th>Room Image: </th>"."<td>"."<img src='../../../resource/assets/img/room/".$singleRoom->file_path."'></td>"."</tr>";
+                    ?>
 
-                <div class="form-box" style="margin-top: 0%">
-                    <div class="form-top">
-                        <dv>
 
-                            <?php  if(isset($_SESSION['message']) )if($_SESSION['message']!=""){ ?>
-
-                                <div  id="message" class="form button"   style="font-size: smaller  " >
-                                    <center>
-                                        <?php if((array_key_exists('message',$_SESSION)&& (!empty($_SESSION['message'])))) {
-                                            echo "&nbsp;".Message::message();
-                                        }
-                                        Message::message(NULL);
-                                        ?></center>
-                                </div>
-                            <?php } ?>
-                        </dv>
-                        <div class="form-top-left">
-                            <h3>Add Room</h3>
-                            <p>Fill in the form below to get instant access:</p>
-                        </div>
-                        <div class="form-top-right">
-                            <i class="fa fa-pencil"></i>
-                        </div>
-                    </div>
-                    <div class="form-bottom">
-                        <form role="form" action="room_store.php" method="post" class="registration-form" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label class="sr-only" for="form-first_name">Room No:</label>
-                                <input type="text" name="room_no" placeholder="Enter your Room No..." class="form-first-name form-control" id="form-first-name">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-last-name">Type of Room</label>
-                                <input type="text" name="room_name" placeholder="Enter Type of Room..." class="form-last-name form-control" id="form-last-name">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-room-size">Room Size</label>
-                                <input type="text" name="room_size" placeholder="Enter Room Size..." class="form-email form-control" id="form-email">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="sr-only" for="form-bed_no">Bed No</label>
-                                <input type="radio" name="bed_no" value="1">01
-                                <input type="radio" name="bed_no" value="2">02
-                                <input type="radio" name="bed_no" value="3">03
-                                <input type="radio" name="bed_no" value="4">04
-
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-email">Rate</label>
-                                <input type="number" name="rate" placeholder="Enter Room Price..." class="form-phone form-control" id="form-phone">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="address">Description</label>
-                                <input type="text" name="description" placeholder="Enter Room Description..." class="form-address form-control" id="form-address">
-                            </div>
-                            <div class="form-group">
-                                <label for="form-author">Select your Room Picuture</label>
-                                <input type="file" name="fileUpload"  class="form-author form-control" id="form-author">
-                            </div>
-
-                            <button type="submit" class="btn">Create Room!</button>
-                        </form>
+                    </table>
                     </div>
                 </div>
-
             </div>
         </div>
+        <footer>
+            <hr>
 
+            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        </footer>
     </div>
 </div>
-<footer>
-    <hr>
-
-    <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-    <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
+</div>
 
 
 <script src="../../../resource/assets/bootstrap/js/bootstrap.js"></script>
@@ -281,9 +230,5 @@ if(!$status) {
     });
 </script>
 
-
-<script>
-    $('.alert').slideDown("slow").delay(5000).slideUp("slow");
-</script>
 
 </body></html>
