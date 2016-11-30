@@ -142,7 +142,7 @@ if(!$status) {
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
                 <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
+                <li ><a href="#"><span class="fa fa-caret-right"></span> Room Management</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
@@ -214,33 +214,42 @@ if(!$status) {
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="" method="post" class="registration-form" enctype="multipart/form-data">
+                        <form role="form" action="room_store.php" method="post" class="registration-form" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first_name">Room No:</label>
-                                <input type="text" name="room_no" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                                <input type="text" name="room_no" placeholder="Enter your Room No..." class="form-first-name form-control" id="form-first-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Type of Room</label>
-                                <input type="text" name="room_name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                                <input type="text" name="room_name" placeholder="Enter Type of Room..." class="form-last-name form-control" id="form-last-name">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-email">Room Size</label>
-                                <input type="text" name="room_size" placeholder="Email..." class="form-email form-control" id="form-email">
+                                <label class="sr-only" for="form-room-size">Room Size</label>
+                                <input type="text" name="room_size" placeholder="Enter Room Size..." class="form-email form-control" id="form-email">
                             </div>
 
                             <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                <label class="sr-only" for="form-bed">Bed No</label>
+                                <input type="radio" name="bed" value="1">01
+                                <input type="radio" name="bed" value="2">02
+                                <input type="radio" name="bed" value="3">03
+                                <input type="radio" name="bed" value="4">04
+
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-email">Phone</label>
-                                <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone">
+                                <label class="sr-only" for="form-email">Rate</label>
+                                <input type="number" name="rate" placeholder="Enter Room Price..." class="form-phone form-control" id="form-phone">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="address">Address</label>
-                                <input type="text" name="address" placeholder="Address..." class="form-address form-control" id="form-address">
+                                <label class="sr-only" for="address">Description</label>
+                                <input type="text" name="description" placeholder="Enter Room Description..." class="form-address form-control" id="form-address">
                             </div>
-                            <button type="submit" class="btn">Sign me up!</button>
+                            <div class="form-group">
+                                <label for="form-author">Select your Room Picuture</label>
+                                <input type="file" name="fileUpload"  class="form-author form-control" id="form-author">
+                            </div>
+
+                            <button type="submit" class="btn">Create Room!</button>
                         </form>
                     </div>
                 </div>
@@ -257,8 +266,6 @@ if(!$status) {
     <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
     <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
 </footer>
-</div>
-</div>
 
 
 <script src="../../../resource/assets/bootstrap/js/bootstrap.js"></script>
