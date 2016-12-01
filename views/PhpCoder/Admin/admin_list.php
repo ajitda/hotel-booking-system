@@ -191,13 +191,13 @@ $serial = 1;
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">
+                    <div class="text-center" style="padding: 5px;">
                         <a href='admin_list.php'><button class='btn btn-info'>Admin List</button></a>
                         <a href='create_admin.php.php'><button class='btn btn-info'>Create Admin</button></a>
                     </div>
                 <?php
                 $serial=1;
-                echo "<table class='table table-bordered table-striped' border='5px' >";
+                echo "<table class='table table-bordered table-striped' border='8px' >";
                 echo "<th> serial </th>";
                 echo "<th> ID </th>";
                 echo "<th> First Name </th>";

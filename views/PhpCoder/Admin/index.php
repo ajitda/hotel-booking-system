@@ -135,8 +135,6 @@ if(!$status) {
         </div>
       </div>
     </div>
-    
-
     <div class="sidebar-nav">
     <ul>
     <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
