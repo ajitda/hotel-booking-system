@@ -149,7 +149,7 @@ if(!$status) {
                 <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Room Management</a></li>
 
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
-                <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List</a></li>
+                <li ><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin Management</a></li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
             </ul></li>
         <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
