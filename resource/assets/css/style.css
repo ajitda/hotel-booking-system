@@ -212,12 +212,12 @@ a.jqTransformSelectOpen {display:block;position:absolute;top:1px;right:1px;width
 	border-radius: 2px;
 	padding:7px 0px 7px 3px;
 }
-.form-group select {
+.boooking-form select {
 	border: 1px solid #000;
 	width: 165px;
 	padding:7px 0;
 }
-.form-group input {
+.boooking-form input {
 	border: 1px solid #000;
 	width: 163px;
 	padding:7px 0px 7px 3px;

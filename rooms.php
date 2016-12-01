@@ -24,7 +24,6 @@ $allRoom = $room->index1("obj");
             echo "<p>Rate : ".$oneRoom-> rate."</p>";
             echo "<div class='room-desc'> Description : ".$oneRoom->description ."</div>";
             echo "<div>";
-            echo "<a href='room_details.php?id=$oneRoom->id'><button class='btn btn-info'>View</button></a> ";
             echo "<a href='user_create_booking.php'><button class='btn btn-primary'>Book Now</button></a> ";
             echo "</div>";
             echo "</div>";
