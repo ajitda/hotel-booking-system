@@ -66,7 +66,7 @@ class Room extends DB{
             Message::setMessage("Success ! Data has been inserted Successfully :)");
         else
             Message::setMessage("Failed ! Data has not been inserted Successfully ):");
-        Utility::redirect('index.php');
+        Utility::redirect('index_booking.php');
 
     }
 

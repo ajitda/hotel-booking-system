@@ -160,13 +160,13 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
         $sql='DELETE FROM birthday WHERE id ='.$this->id;
         $STH = $this->DBH->prepare($sql);
         $STH->execute();
-        Utility::redirect('index.php');
+        Utility::redirect('index_booking.php');
     }
     public function trash($fetchMode ='ASSOC'){
         $query = "UPDATE birthday SET is_deleted=NOW() Where id=".$this->id;
         $stmt = $this->DBH->prepare($query);
         $stmt->execute();
-        Utility::redirect('index.php');
+        Utility::redirect('index_booking.php');
     }
     public function trashed($fetchMode='ASSOC'){
         $sql = "SELECT * from birthday where is_deleted <> 'No' ";

@@ -94,7 +94,7 @@ class Admin extends DB
         $sql = "UPDATE book_title SET book_name=?, author_name=? WHERE id=" . $this->id;//UPDATE `atomic_project_b35`.`book_title` SET `book_name` = 'b1' WHERE `book_title`.`id` = 2
         $STH = $this->DBH->prepare($sql);
         $STH->execute($arrData);
-        Utility::redirect('index.php');
+        Utility::redirect('index_booking.php');
     }
 
     public function delete()
@@ -103,7 +103,7 @@ class Admin extends DB
         $sql = "DELETE FROM book_title  WHERE id=" . $this->id;//UPDATE `atomic_project_b35`.`book_title` SET `book_name` = 'b1' WHERE `book_title`.`id` = 2
         $STH = $this->DBH->prepare($sql);
         $STH->execute();
-        Utility::redirect('index.php');
+        Utility::redirect('index_booking.php');
     }
 
     public function trash()
@@ -113,7 +113,7 @@ class Admin extends DB
         $sql = "UPDATE book_title SET is_delete=NOW() WHERE id=" . $this->id;//UPDATE `atomic_project_b35`.`book_title` SET `book_name` = 'b1' WHERE `book_title`.`id` = 2
         $STH = $this->DBH->prepare($sql);
         $STH->execute();
-       Utility::redirect('index.php');
+       Utility::redirect('index_booking.php');
 
 
     }
