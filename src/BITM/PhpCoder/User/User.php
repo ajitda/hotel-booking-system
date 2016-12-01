@@ -188,5 +188,13 @@ VALUES (:firstName, :lastName, :gender, :city, :country, :nationality, :nid_birt
         return $arrAllData;
     }
 
+
+    public function delete(){
+        $sql='DELETE FROM users WHERE id = '.$this->id;
+        $STH = $this->conn->prepare($sql);
+        $result = $STH->execute();
+        Utility::redirect('user_list.php');
+    }//end of delete
+
 }
 

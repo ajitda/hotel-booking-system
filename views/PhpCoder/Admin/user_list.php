@@ -152,7 +152,6 @@ $serial = 1;
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
                 <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
@@ -227,7 +226,7 @@ $serial = 1;
 
                         echo "<td>";
                         echo "<a href='view_single_user.php?email=$oneData->email'><button class='btn btn-info'>View</button></a> ";
-                        echo "<a href='admin_edit.php?id=$oneData->id'><button class='btn btn-primary'>Delete</button></a> ";
+                        echo "<a href='delete_user.php?id=$oneData->id'><button class='btn btn-primary'>Delete</button></a> ";
                         echo "<a href=''><button class='btn btn-primary'>Email</button></a> ";
                         echo "</td>";
                         echo "</tr>";

@@ -31,11 +31,9 @@ $allRoom = $room->index1("obj");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.css">
-
     <script src="../../../resource/assets/js/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../../../resource/assets/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -43,8 +41,6 @@ $allRoom = $room->index1("obj");
             $(".knob").knob();
         });
     </script>
-
-
     <link rel="stylesheet" type="text/css" href="../../../resource/assets/css/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
 
@@ -140,15 +136,13 @@ $allRoom = $room->index1("obj");
     </div>
 </div>
 </div>
-
-
 <div class="sidebar-nav">
     <ul>
         <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
-                <li ><a href="users.html"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
+                <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
+                <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Rooom Management</a></li>
                 <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
                 <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
@@ -171,7 +165,6 @@ $allRoom = $room->index1("obj");
         <li><a href="http://portnine.com/bootstrap-themes/aircraft" class="nav-header" target="blank"><i class="fa fa-fw fa-heart"></i> Get Premium</a></li>
     </ul>
 </div>
-
 <div class="content">
     <div class="header">
         <div class="stats">
@@ -179,7 +172,6 @@ $allRoom = $room->index1("obj");
             <p class="stat"><span class="label label-success">27</span> Tasks</p>
             <p class="stat"><span class="label label-danger">15</span> Overdue</p>
         </div>
-
         <h1 class="page-title">Dashboard</h1>
         <ul class="breadcrumb">
             <li><a href="index.php">Home</a> </li>
@@ -191,12 +183,10 @@ $allRoom = $room->index1("obj");
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
+                    <h3>All Rooms <a href="create_room.php">Create Room</a> </h3>
                     <?php
-
                     $serial=1;
-
                     echo "<table class='table table-bordered table-striped' border='5px' >";
-
                     echo "<th> serial </th>";
                     echo "<th> Id </th>";
                     echo "<th> Room No </th>";
@@ -207,8 +197,6 @@ $allRoom = $room->index1("obj");
                     echo "<th> Description </th>";
                     echo "<th> File Path </th>";
                     echo "<th> Action </th>";
-
-
                     foreach($allRoom as $oneRoom){      ########### Traversing $someData is Required for pagination  #############
                         echo "<tr style='height: 40px'>";
                         echo "<td>".$serial."</td>";
@@ -230,7 +218,6 @@ $allRoom = $room->index1("obj");
                         $serial++;
                     }
                     echo "</table>";
-
                     ?>
                 </div>
             </div>

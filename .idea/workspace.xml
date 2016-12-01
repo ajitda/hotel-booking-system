@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7db1321d-15f1-482b-a8b3-b1e19fcf96bb" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php" afterPath="$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php" />
+    </list>
+    <ignored path="phpcoder_finalproject_b35.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="phpcoder_finalproject_b35" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="create_room.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/create_room.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#91#125#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Room.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.0">
+              <caret line="84" column="39" selection-start-line="84" selection-start-column="39" selection-end-line="84" selection-end-column="39" />
+              <folding>
+                <element signature="e#40#78#0#PHP" expanded="true" />
+                <marker date="1480493442689" expanded="true" signature="1575:1684" placeholder="Insert INTO room..." />
+                <marker date="1480493442689" expanded="true" signature="2074:2108" placeholder="SELECT * FRO..admin..." />
+                <marker date="1480493442689" expanded="true" signature="2074:2110" placeholder="SELECT * FRO..room..." />
+                <marker date="1480493442689" expanded="true" signature="2356:2426" placeholder="UPDATE `admi..." />
+                <marker date="1480493442689" expanded="true" signature="2632:2750" placeholder="..." />
+                <marker date="1480493442689" expanded="true" signature="2957:3107" placeholder="UPDATE `admi..." />
+                <marker date="1480493442689" expanded="true" signature="3435:3532" placeholder="..." />
+                <marker date="1480493442689" expanded="true" signature="3759:3799" placeholder="SELECT * fro..admin..." />
+                <marker date="1480493442689" expanded="true" signature="4146:4177" placeholder="DELETE FROM ..." />
+                <marker date="1480493442689" expanded="true" signature="4369:4415" placeholder="UPDATE birth..." />
+                <marker date="1480493442689" expanded="true" signature="4610:4657" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="5027:5072" placeholder="Update birth..." />
+                <marker date="1480493442689" expanded="true" signature="5346:5407" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="5742:5804" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="6167:6317" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="6410:6507" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="6601:6702" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480493442689" expanded="true" signature="7001:7050" placeholder="SELECT * FRO..birthday..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_list.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/user_list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1480493534891" expanded="true" signature="9259:9271" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_room.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+              <folding>
+                <element signature="e#91#125#0#PHP" expanded="true" />
+                <marker date="1480492368726" expanded="true" signature="9240:9252" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_room_method.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room_method.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/admin_list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <folding>
+                <element signature="e#91#125#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Admin/Admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="155" column="27" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="27" />
+              <folding>
+                <element signature="e#41#79#0#PHP" expanded="true" />
+                <marker date="1480480169753" expanded="true" signature="1436:1622" placeholder="INSERT INTO `admin`..." />
+                <marker date="1480480169753" expanded="true" signature="2018:2179" placeholder="..." />
+                <marker date="1480480169753" expanded="true" signature="2345:2460" placeholder="..." />
+                <marker date="1480480169753" expanded="true" signature="2601:2663" placeholder="UPDATE `admi..." />
+                <marker date="1480480169753" expanded="true" signature="2895:2996" placeholder="..." />
+                <marker date="1480480169753" expanded="true" signature="3200:3243" placeholder="SELECT * FRO..admin..." />
+                <marker date="1480480169753" expanded="true" signature="3499:3569" placeholder="UPDATE `admi..." />
+                <marker date="1480480169753" expanded="true" signature="3775:3893" placeholder="..." />
+                <marker date="1480480169753" expanded="true" signature="4100:4243" placeholder="UPDATE `admi..." />
+                <marker date="1480480169753" expanded="true" signature="4100:4250" placeholder="UPDATE `admi..." />
+                <marker date="1480480169753" expanded="true" signature="4567:4664" placeholder="..." />
+                <marker date="1480480169753" expanded="true" signature="5304:5335" placeholder="DELETE FROM ..." />
+                <marker date="1480480169753" expanded="true" signature="5527:5573" placeholder="UPDATE birth..." />
+                <marker date="1480480169753" expanded="true" signature="5768:5815" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="6185:6230" placeholder="Update birth..." />
+                <marker date="1480480169753" expanded="true" signature="6504:6565" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="6900:6962" placeholder="SELECT * fro..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="7325:7475" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="7568:7665" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="7759:7860" placeholder="SELECT * FRO..birthday..." />
+                <marker date="1480480169753" expanded="true" signature="8159:8208" placeholder="SELECT * FRO..birthday..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_admin.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="207" column="6" selection-start-line="207" selection-start-column="6" selection-end-line="207" selection-end-column="6" />
+              <folding>
+                <element signature="e#91#125#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="room_store.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/room_store.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="150" column="48" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/admin_edit.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/admin_update.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/admin_list.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/create_admin.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/index.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/create_room.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/room_store.php" />
+        <option value="$PROJECT_DIR$/src/BITM/PhpCoder/Admin/Admin.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/view_room_method.php" />
+        <option value="$PROJECT_DIR$/views/PhpCoder/Admin/view_room.php" />
+        <option value="$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhpCoder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhpCoder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BITM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhpCoder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BITM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhpCoder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BITM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PhpCoder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phpcoder_finalproject_b35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7db1321d-15f1-482b-a8b3-b1e19fcf96bb" name="Default" comment="" />
+      <created>1480431443769</created>
+      <option name="number" value="Default" />
+      <updated>1480431443769</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09621451" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/create_room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/create_admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="235" column="70" selection-start-line="235" selection-start-column="70" selection-end-line="235" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#78#0#PHP" expanded="true" />
+            <marker date="1480493442689" expanded="true" signature="1575:1684" placeholder="Insert INTO room..." />
+            <marker date="1480493442689" expanded="true" signature="2074:2108" placeholder="SELECT * FRO..admin..." />
+            <marker date="1480493442689" expanded="true" signature="2074:2110" placeholder="SELECT * FRO..room..." />
+            <marker date="1480493442689" expanded="true" signature="2356:2426" placeholder="UPDATE `admi..." />
+            <marker date="1480493442689" expanded="true" signature="2632:2750" placeholder="..." />
+            <marker date="1480493442689" expanded="true" signature="2957:3107" placeholder="UPDATE `admi..." />
+            <marker date="1480493442689" expanded="true" signature="3435:3532" placeholder="..." />
+            <marker date="1480493442689" expanded="true" signature="3759:3799" placeholder="SELECT * fro..admin..." />
+            <marker date="1480493442689" expanded="true" signature="4146:4177" placeholder="DELETE FROM ..." />
+            <marker date="1480493442689" expanded="true" signature="4369:4415" placeholder="UPDATE birth..." />
+            <marker date="1480493442689" expanded="true" signature="4610:4657" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="5027:5072" placeholder="Update birth..." />
+            <marker date="1480493442689" expanded="true" signature="5346:5407" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="5742:5804" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6167:6317" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6410:6507" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6601:6702" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="7001:7050" placeholder="SELECT * FRO..birthday..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+            <marker date="1480492368726" expanded="true" signature="9240:9252" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room_method.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/admin_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Admin/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="155" column="27" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="27" />
+          <folding>
+            <element signature="e#41#79#0#PHP" expanded="true" />
+            <marker date="1480480169753" expanded="true" signature="1436:1622" placeholder="INSERT INTO `admin`..." />
+            <marker date="1480480169753" expanded="true" signature="2018:2179" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="2345:2460" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="2601:2663" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="2895:2996" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="3200:3243" placeholder="SELECT * FRO..admin..." />
+            <marker date="1480480169753" expanded="true" signature="3499:3569" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="3775:3893" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="4100:4243" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="4100:4250" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="4567:4664" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="5304:5335" placeholder="DELETE FROM ..." />
+            <marker date="1480480169753" expanded="true" signature="5527:5573" placeholder="UPDATE birth..." />
+            <marker date="1480480169753" expanded="true" signature="5768:5815" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="6185:6230" placeholder="Update birth..." />
+            <marker date="1480480169753" expanded="true" signature="6504:6565" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="6900:6962" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7325:7475" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7568:7665" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7759:7860" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="8159:8208" placeholder="SELECT * FRO..birthday..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="6" selection-start-line="207" selection-start-column="6" selection-end-line="207" selection-end-column="6" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/room_store.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/admin_edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/admin_update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/User/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/User/store.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/BlueOcean/BookingInfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.224138">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <marker date="1480483250790" expanded="true" signature="1892:2161" placeholder="INSERT INTO `booking_info`..." />
+            <marker date="1480483250790" expanded="true" signature="2642:2754" placeholder="..." />
+            <marker date="1480483250790" expanded="true" signature="2920:3035" placeholder="..." />
+            <marker date="1480483250790" expanded="true" signature="3166:3438" placeholder="SELECT * fro..booking_info..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Admin/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1480430837916" expanded="true" signature="616:659" placeholder="SELECT * FRO..admin..." />
+            <marker date="1480430837916" expanded="true" signature="970:1074" placeholder="SELECT * FRO..admin..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/BlueOcean/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-73.88461">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/create_admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="235" column="70" selection-start-line="235" selection-start-column="70" selection-end-line="235" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="48" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/room_store.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/create_room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Admin/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="155" column="27" selection-start-line="155" selection-start-column="27" selection-end-line="155" selection-end-column="27" />
+          <folding>
+            <element signature="e#41#79#0#PHP" expanded="true" />
+            <marker date="1480480169753" expanded="true" signature="1436:1622" placeholder="INSERT INTO `admin`..." />
+            <marker date="1480480169753" expanded="true" signature="2018:2179" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="2345:2460" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="2601:2663" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="2895:2996" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="3200:3243" placeholder="SELECT * FRO..admin..." />
+            <marker date="1480480169753" expanded="true" signature="3499:3569" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="3775:3893" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="4100:4243" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="4100:4250" placeholder="UPDATE `admi..." />
+            <marker date="1480480169753" expanded="true" signature="4567:4664" placeholder="..." />
+            <marker date="1480480169753" expanded="true" signature="5304:5335" placeholder="DELETE FROM ..." />
+            <marker date="1480480169753" expanded="true" signature="5527:5573" placeholder="UPDATE birth..." />
+            <marker date="1480480169753" expanded="true" signature="5768:5815" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="6185:6230" placeholder="Update birth..." />
+            <marker date="1480480169753" expanded="true" signature="6504:6565" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="6900:6962" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7325:7475" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7568:7665" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="7759:7860" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480480169753" expanded="true" signature="8159:8208" placeholder="SELECT * FRO..birthday..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room_method.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="6" selection-start-line="207" selection-start-column="6" selection-end-line="207" selection-end-column="6" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/admin_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/view_room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#91#125#0#PHP" expanded="true" />
+            <marker date="1480492368726" expanded="true" signature="9240:9252" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BITM/PhpCoder/Room/Room.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.0">
+          <caret line="84" column="39" selection-start-line="84" selection-start-column="39" selection-end-line="84" selection-end-column="39" />
+          <folding>
+            <element signature="e#40#78#0#PHP" expanded="true" />
+            <marker date="1480493442689" expanded="true" signature="1575:1684" placeholder="Insert INTO room..." />
+            <marker date="1480493442689" expanded="true" signature="2074:2108" placeholder="SELECT * FRO..admin..." />
+            <marker date="1480493442689" expanded="true" signature="2074:2110" placeholder="SELECT * FRO..room..." />
+            <marker date="1480493442689" expanded="true" signature="2356:2426" placeholder="UPDATE `admi..." />
+            <marker date="1480493442689" expanded="true" signature="2632:2750" placeholder="..." />
+            <marker date="1480493442689" expanded="true" signature="2957:3107" placeholder="UPDATE `admi..." />
+            <marker date="1480493442689" expanded="true" signature="3435:3532" placeholder="..." />
+            <marker date="1480493442689" expanded="true" signature="3759:3799" placeholder="SELECT * fro..admin..." />
+            <marker date="1480493442689" expanded="true" signature="4146:4177" placeholder="DELETE FROM ..." />
+            <marker date="1480493442689" expanded="true" signature="4369:4415" placeholder="UPDATE birth..." />
+            <marker date="1480493442689" expanded="true" signature="4610:4657" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="5027:5072" placeholder="Update birth..." />
+            <marker date="1480493442689" expanded="true" signature="5346:5407" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="5742:5804" placeholder="SELECT * fro..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6167:6317" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6410:6507" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="6601:6702" placeholder="SELECT * FRO..birthday..." />
+            <marker date="1480493442689" expanded="true" signature="7001:7050" placeholder="SELECT * FRO..birthday..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/PhpCoder/Admin/user_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1480493534891" expanded="true" signature="9259:9271" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

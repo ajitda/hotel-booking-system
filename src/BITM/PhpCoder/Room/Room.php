@@ -57,7 +57,7 @@ class Room extends DB{
     public function store()
     {
         $arrData = array($this->roomNo,$this->roomName, $this->roomSize, $this->bedNo,$this->rate,$this->description, $this->file_path);
-        $query = "Insert INTO room(room_no, room_name, room_size, bed_no, rate, description, file_path) VALUES (?,?,?,?,?,?,?)";
+        $query = "Insert INTO room (room_no, room_name, room_size, bed_no, rate, description, file_path) VALUES (?,?,?,?,?,?,?)";
 
         $result = $this->conn->prepare($query);
 
@@ -70,72 +70,6 @@ class Room extends DB{
 
     }
 
-
-    public function change_password(){
-        $query="UPDATE `admin` SET `password`=:password  WHERE `email` =:email";
-        $result=$this->conn->prepare($query);
-        $result->execute(array(':password'=>$this->password,':email'=>$this->email));
-
-        if($result){
-            Message::message("
-             <div class=\"alert alert-info\">
-             <strong>Success!</strong> Password has been updated  successfully.
-              </div>");
-            // Utility::redirect('../../../../views/SEIPXXXX/User/Profile/login.php');
-        }
-        else {
-            echo "Error";
-        }
-
-    }
-
-    public function view(){
-        $query="SELECT * FROM `admin` WHERE `email` =:email";
-        $result=$this->conn->prepare($query);
-        $result->execute(array(':email'=>$this->email));
-        $row=$result->fetch(PDO::FETCH_OBJ);
-        return $row;
-    }// end of view()
-
-
-    public function validTokenUpdate(){
-        $query="UPDATE `admin` SET  `email_verified`='".'Yes'."' WHERE `email` =:email";
-        $result=$this->conn->prepare($query);
-        $result->execute(array(':email'=>$this->email));
-
-        if($result){
-            Message::message("
-             <div class=\"alert alert-success\">
-             <strong>Success!</strong> Email verification has been successful. Please login now!
-              </div>");
-        }
-        else {
-            echo "Error";
-        }
-        return Utility::redirect('../../../../views/PhpCoder/User/Profile/login.php');
-    }
-
-    public function update(){
-
-        $query="UPDATE `admin` SET `first_name`=:firstName, `last_name` =:lastName ,  `email` =:email, `phone` = :phone,
- `address` = :address  WHERE `email` = :email";
-
-        $result=$this->conn->prepare($query);
-
-        $result->execute(array(':firstName'=>$this->firstName,':lastName'=>$this->lastName,':phone'=>$this->phone,
-            ':address'=>$this->address,':email'=>$this->email));
-
-        if($result){
-            Message::message("
-             <div class=\"alert alert-info\">
-             <strong>Success!</strong> Data has been updated  successfully.
-              </div>");
-        }
-        else {
-            echo "Error";
-        }
-        return Utility::redirect('admin_list.php');
-    }
 
 
     //crud
@@ -151,21 +85,48 @@ class Room extends DB{
         return $arrAllData;
     }//end of view admin
 
+
+    public function view(){
+        $query="SELECT * FROM `room` WHERE `id` =:id";
+        $result=$this->conn->prepare($query);
+        $result->execute(array(':id'=>$this->id));
+        $row=$result->fetch(PDO::FETCH_OBJ);
+        return $row;
+    }// end of view()
+
+
+
+    public function update(){
+
+        if(!empty($this->file_path)) {
+            $arrData = array($this->roomNo,$this->roomName,$this->roomSize,$this->bedNo,$this->rate,$this->description, $this->file_path);
+            $sql = "UPDATE room set room_no=?, room_name=?,room_size=?,bed_no=?, rate=?, description=?, file_path=? WHERE id=" . $this->id;
+        }else
+        {
+            $arrData = array($this->roomNo,$this->roomName,$this->roomSize,$this->bedNo,$this->rate,$this->description);
+            $sql = "UPDATE room set room_no=?, room_name=?,room_size=?,bed_no=?, rate=?, description=? WHERE id=" . $this->id;
+
+        }
+
+        $STH = $this->conn->prepare($sql);
+        $STH->execute($arrData);
+        Utility::redirect('view_room.php');
+    }
     public function delete(){
-        $sql='DELETE FROM birthday WHERE id ='.$this->id;
-        $STH = $this->DBH->prepare($sql);
+        $sql='DELETE FROM room WHERE id ='.$this->id;
+        $STH = $this->conn->prepare($sql);
         $STH->execute();
-        Utility::redirect('index.php');
+        Utility::redirect('view_room.php');
     }
     public function trash($fetchMode ='ASSOC'){
-        $query = "UPDATE birthday SET is_deleted=NOW() Where id=".$this->id;
-        $stmt = $this->DBH->prepare($query);
+        $query = "UPDATE room SET is_deleted=NOW() Where id=".$this->id;
+        $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        Utility::redirect('index.php');
+        Utility::redirect('view_room.php');
     }
     public function trashed($fetchMode='ASSOC'){
-        $sql = "SELECT * from birthday where is_deleted <> 'No' ";
-        $STH = $this->DBH->query($sql);
+        $sql = "SELECT * from room where is_deleted <> 'No' ";
+        $STH = $this->conn->query($sql);
         $fetchMode = strtoupper($fetchMode);
         if(substr_count($fetchMode,'OBJ') > 0)
             $STH->setFetchMode(PDO::FETCH_OBJ);
