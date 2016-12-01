@@ -2,9 +2,13 @@
 include_once('vendor/autoload.php');
 
 if(!isset($_SESSION) )session_start();
-use App\BITM\PhpCoder\Message\Message;
-
-
+use App\BITM\PhpCoder\User\User;
+use App\BITM\PhpCoder\User\Auth;
+$obj= new User();
+$obj->prepare($_SESSION);
+$singleUser = $obj->view();
+$auth= new Auth();
+$status = $auth->prepare($_SESSION)->logged_in();
 ?>
 <?php include('header.php');  ?>
 <!-- header end -->`
@@ -13,12 +17,13 @@ use App\BITM\PhpCoder\Message\Message;
 <div class="box1">
 	<div class="wrapper">
 		<div class="login-form">
-		<h1>Login to Book Now</h1>
+
+			<?php if(!$status){ ?>
+				<h1>Login to Book Now</h1>
 		<form role="form" action="views/PhpCoder/User/Authentication/login.php" method="post" class="login-form">
 
 				<label class="sr-only" for="email">Email</label>
 				<input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
-
 
 				<label class="sr-only" for="form-password">Password</label>
 				<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
@@ -26,6 +31,9 @@ use App\BITM\PhpCoder\Message\Message;
 			<button type="submit" class="btn">Sign in!</button>
 			<a href="views/PhpCoder/User/Profile/signup.php"><button>SignUp</button> </a>
 		</form>
+	<?php }else{ ?>
+				<h2>Hello <?php echo "$singleUser->first_name $singleUser->last_name"?>! <span class="logout"> <a href= "views/PhpCoder/User/Authentication/logout.php" > LOGOUT </a></span></h2>
+	<?php }?>
 
 </div>
 		<div class="kwicks-wrapper marg_bot1">

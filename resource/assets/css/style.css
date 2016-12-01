@@ -179,7 +179,7 @@ a.jqTransformSelectOpen {display:block;position:absolute;top:1px;right:1px;width
 .logout a {
 	color: #000;
 }
-.login-form > h1 {
+.login-form > h1{
 	color: #000;
 	float: none;
 	font-size: 20px;
@@ -187,11 +187,68 @@ a.jqTransformSelectOpen {display:block;position:absolute;top:1px;right:1px;width
 }
 .login-form label {
 	color: #000;
-	font-size: 15px;
+	font-size: 18px;
+	display: inline-block;
+	padding: 5px 0;
 }
 .login-form form {
 	padding: 10px 35px;
 }
 .login-form .form-control {
 	border: 1px solid #000;
+}
+.boooking-form .form-group label {
+	color: #000;
+	display: inline-block;
+	width: 120px;
+}
+.boooking-form .form-group {
+	color: #000;
+	font-size: 15px;
+	padding: 10px 50px;
+}
+.form-customer_name.form-control {
+	border: 1px solid #000;
+	border-radius: 2px;
+	padding:7px 0px 7px 3px;
+}
+.form-group select {
+	border: 1px solid #000;
+	width: 165px;
+	padding:7px 0;
+}
+.form-group input {
+	border: 1px solid #000;
+	width: 163px;
+	padding:7px 0px 7px 3px;
+}
+.boooking-form button {
+	background: #000 none repeat scroll 0 0;
+	color: #fff;
+	display: inline-block;
+	font-size: 20px;
+	margin: 10px 50px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+.booking-form-section h1{
+	color: #000;
+	float: none;
+	font-size: 20px;
+	padding-top: 0;
+	margin:20px 0 20px 20px;
+}
+.login-form button {
+	background: #000 none repeat scroll 0 0;
+	border: medium none;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	padding: 6px 20px;
+}
+.login-form .form-control {
+	border: 1px solid #000;
+	padding: 5px 20px;
+	margin-right: 5px;
 }

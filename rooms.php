@@ -1,5 +1,7 @@
 <?php
+
 include_once('vendor/autoload.php');
+
 use App\BITM\PhpCoder\Room\Room;
 
 $room = new Room();
@@ -23,7 +25,7 @@ $allRoom = $room->index1("obj");
             echo "<div class='room-desc'> Description : ".$oneRoom->description ."</div>";
             echo "<div>";
             echo "<a href='room_details.php?id=$oneRoom->id'><button class='btn btn-info'>View</button></a> ";
-            echo "<a href='room_edit.php?id=$oneRoom->id'><button class='btn btn-primary'>Book Now</button></a> ";
+            echo "<a href='user_create_booking.php'><button class='btn btn-primary'>Book Now</button></a> ";
             echo "</div>";
             echo "</div>";
             echo "</div>";

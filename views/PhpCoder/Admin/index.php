@@ -143,6 +143,7 @@ if(!$status) {
             <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User Management</a></li>
             <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Room Management</a></li>
             <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin Management </a> </li>
+            <li><a href="bookings.php"><span class="fa fa-caret-right"></span> Booking Management </a> </li>
             <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
     </ul></li>
 
