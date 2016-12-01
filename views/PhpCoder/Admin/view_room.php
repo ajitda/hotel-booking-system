@@ -141,17 +141,11 @@ $allRoom = $room->index1("obj");
         <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
         <li><ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="index.php"><span class="fa fa-caret-right"></span> Main</a></li>
-                <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User List</a></li>
-                <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Rooom Management</a></li>
-                <li ><a href="create_admin.php"><span class="fa fa-caret-right"></span> Create Admin</a></li>
-                <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin List </a> </li>
+                <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User Management</a></li>
+                <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Room Management</a></li>
+                <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin Management </a> </li>
+                <li ><a href="#"><span class="fa fa-caret-right"></span> Booking Management</a></li>
                 <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
-            </ul></li>
-        <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
-        <li><ul class="accounts-menu nav nav-list collapse">
-                <li ><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
-                <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
-                <li ><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
             </ul></li>
 
         <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-legal"></i> Legal<i class="fa fa-collapse"></i></a></li>
@@ -183,7 +177,11 @@ $allRoom = $room->index1("obj");
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>All Rooms <a href="create_room.php">Create Room</a> </h3>
+                    <div class="text-center" style="padding: 8px">
+                        <a href='create_room.php'><button class='btn btn-info'>Add Room </button></a>
+                        <a href='#'><button class='btn btn-info'>Trash List</button></a>
+                    </div>
+
                     <?php
                     $serial=1;
                     echo "<table class='table table-bordered table-striped' border='5px' >";
@@ -194,7 +192,6 @@ $allRoom = $room->index1("obj");
                     echo "<th> Room Size </th>";
                     echo "<th> Bed No </th>";
                     echo "<th> Rate </th>";
-                    echo "<th> Description </th>";
                     echo "<th> File Path </th>";
                     echo "<th> Action </th>";
                     foreach($allRoom as $oneRoom){      ########### Traversing $someData is Required for pagination  #############
@@ -206,7 +203,6 @@ $allRoom = $room->index1("obj");
                         echo "<td>".$oneRoom->room_size ."</td>";
                         echo "<td>".$oneRoom->bed_no ."</td>";
                         echo "<td>".$oneRoom-> rate."</td>";
-                        echo "<td>".$oneRoom->description ."</td>";
                         echo "<td> <img width=\"150\" height=\"100\" src='../../../resource/assets/img/room/".$oneRoom->file_path."'  ></td>";
                         echo "<td>";
                         echo "<a href='room_details.php?id=$oneRoom->id'><button class='btn btn-info'>View</button></a> ";
