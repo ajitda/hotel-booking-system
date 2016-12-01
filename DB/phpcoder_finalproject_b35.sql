@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2016 at 04:04 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Dec 01, 2016 at 08:43 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -43,9 +43,11 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address`, `email_verified`, `is_deleted`) VALUES
-(2, 'Sayed', 'Md Ali', 'mdali.iiuc@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '12345', 'ctg', 'Yes', 'No'),
+(2, 'Sayed', 'Md Ali jewel', 'mdali.iiuc@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '12345', 'ctg', 'Yes', 'No'),
 (6, 'charles', 'howlader', 'bitm.b35.charles@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '12345', 'Chittagong', '7f5cbc71b0f19d9a14135d152321f87c', 'No'),
-(8, 'Ajit', 'Das', 'dasajit1988@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Chittagong', 'Yes', 'No');
+(8, 'Ajit', 'Das', 'dasajit1988@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Chittagong', 'Yes', 'No'),
+(9, 'Afsana', 'Ahmed', 'afsana.ahmed1000@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Chittagong', 'c5972dea30920119dde4ea0adfc4f2df', 'No'),
+(10, 'Jit', 'Das', 'vedu@9me.site', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'Chittagong', 'a82a0bf4c7425018bbb8c972e624403c', 'No');
 
 -- --------------------------------------------------------
 
@@ -72,8 +74,34 @@ CREATE TABLE `booking_info` (
 --
 
 INSERT INTO `booking_info` (`customer_name`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`, `is_deleted`, `id`) VALUES
-('Ananda', 'Family', '2016-12-02', '2016-12-03', 1, 1, 2, 2, 111, 'No', 7),
-('Ananda2', 'Family', '2016-12-01', '2016-12-02', 1, 1, 1, 1, 1111, 'No', 8);
+('', 'Family', '2016-11-01', '2016-11-02', 1, 1, 1, 1, 1, 'No', 1),
+('kdsjfkjsf', 'Shopping', '2016-11-30', '2016-11-27', 2, 2, 1, 2, 5000, 'No', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room`
+--
+
+CREATE TABLE `room` (
+  `id` int(11) NOT NULL,
+  `room_no` varchar(111) NOT NULL,
+  `room_name` varchar(111) NOT NULL,
+  `room_size` varchar(11) NOT NULL,
+  `bed_no` int(11) NOT NULL,
+  `rate` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `file_path` varchar(200) NOT NULL,
+  `is_deleted` varchar(200) NOT NULL DEFAULT 'No'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`id`, `room_no`, `room_name`, `room_size`, `bed_no`, `rate`, `description`, `file_path`, `is_deleted`) VALUES
+(4, 'B104', 'Honeymoon', '1920*850', 2, 5000, 'it is a delux rooms it is a delux rooms  it is a delux rooms it is a delux rooms it is a delux rooms it is a delux rooms', '14805690291480523791images.jpg', 'No'),
+(5, 'C205', 'Deluxe Room', '2500 * 160', 2, 5000, 'Amader Room Gula onek sundar & Aram Daiok', '14805770251480502304download (1).jpg', '2016-12-01 13:37:00');
 
 -- --------------------------------------------------------
 
@@ -102,9 +130,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address`, `email_verified`, `gender`, `city`, `country`, `nationality`, `nid_birthcertificate`) VALUES
-(17, 'Test', 'User', 'tushar.chowdhury@gmail.com', '202cb962ac59075b964b07152d234b70', '01711111111', 'Chittagong', 'Yes', '', '', '', '', '0'),
-(18, 'sdjf', 'lksdjf', 'tusharbd@gmail.com', 'caf1a3dfb505ffed0d024130f58c5cfa', '5235', 'dfgdg', 'Yes', '', '', '', '', '0'),
-(19, 'asfds', 'sdfgs', 'x@y.z', '202cb962ac59075b964b07152d234b70', '4545', 'sfsj', '4ae15d1c46f25be8db9d07061463c5f0', '', '', '', '', '0');
+(18, 'sdjf', 'lksdjf', 'tusharbd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '5235', 'dfgdg', 'Yes', '', '', '', '', '0'),
+(19, 'asfds', 'sdfgs', 'x@y.z', '202cb962ac59075b964b07152d234b70', '4545', 'sfsj', '4ae15d1c46f25be8db9d07061463c5f0', '', '', '', '', '0'),
+(20, 'Ajit', 'Das', 'dasajit1988@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '12345', 'dfsfsdfsdfsdfsd', '627864a96934e66f279dfae868f2b525', 'male', 'Dhaka', 'Bangladesh', 'Bangladeshi', '3242342343243255'),
+(21, 'Ajit', 'Das', 'vedu@9me.site', '202cb962ac59075b964b07152d234b70', '646465465465456', 'dsfsdfsdfsdf', 'bc52f31ff173ace021ac5c2a78e153ce', '', 'Dhaka', 'Bangladesh', 'Bangladeshi', '894161631331'),
+(22, 'Ajits', 'Das', 'ajit.das_anu@yahoo.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'sdfsafsfdsf', '737695f76673f2eba28ff9b05658e82d', 'male', 'Dhaka', 'Bangladesh', 'Bangladeshi', '894161631331'),
+(24, 'Sayed7', 'dsjfk', 'ajitdas2900@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '123456', 'dksafldksjflaskd', '50bc8c4de077648380a6aa26bd604c39', 'male', 'Dhaka', 'Bangladesh', 'Bangladeshi', '894161631331');
 
 --
 -- Indexes for dumped tables
@@ -123,6 +154,12 @@ ALTER TABLE `booking_info`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -136,17 +173,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `booking_info`
 --
 ALTER TABLE `booking_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

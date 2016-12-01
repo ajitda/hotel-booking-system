@@ -22,20 +22,23 @@ if(!$status) {
 $room = new Room();
 $allRoom = $room->index1("obj");
 
-################## search  block 1 of 5 start ##################
-if(isset($_REQUEST['search']) )$allRoom =  $room->search($_REQUEST);
-$availableKeywords=$room->getAllKeywords();
-$comma_separated_keywords= '"'.implode('","',$availableKeywords).'"';
-################## search  block 1 of 5 end ##################
 
 
 
 
+use App\BITM\PhpCoder\BlueOcean\BookingInfo;
+
+
+$obj_bookingInfo= new BookingInfo();
+$obj_bookingInfo->prepare($_POST);
+$allData = $obj_bookingInfo->index('obj');
+
+if(!isset($_SESSION)) session_start();
+echo Message::message();
+$serial=1;
 
 ######################## pagination code block#1 of 2 start ######################################
-$recordCount= count($allRoom);
-
-
+$recordCount= count($allData);
 if(isset($_REQUEST['Page']))   $page = $_REQUEST['Page'];
 else if(isset($_SESSION['Page']))   $page = $_SESSION['Page'];
 else   $page = 1;
@@ -45,23 +48,11 @@ if(isset($_REQUEST['ItemsPerPage']))   $itemsPerPage = $_REQUEST['ItemsPerPage']
 else if(isset($_SESSION['ItemsPerPage']))   $itemsPerPage = $_SESSION['ItemsPerPage'];
 else   $itemsPerPage = 3;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
-
 $pages = ceil($recordCount/$itemsPerPage);
-$allRoom = $room->indexPaginator($page,$itemsPerPage);
-
+$someData = $obj_bookingInfo->indexPaginator($page,$itemsPerPage);
 $serial = (($page-1) * $itemsPerPage) +1;
-
 ####################### pagination code block#1 of 2 end #########################################
 
-
-
-################## search  block 2 of 5 start ##################
-
-if(isset($_REQUEST['search']) ) {
-    $allRoom = $room->search($_REQUEST);
-    $serial = 1;
-}
-################## search  block 2 of 5 end ##################
 
 ?>
 <!doctype html>
@@ -223,116 +214,110 @@ if(isset($_REQUEST['search']) ) {
                         <a href='#'><button class='btn btn-info'>Trash List</button></a>
                     </div>
 
-                    <form id="searchForm" action="view_room.php"  method="get">
-                        <input type="text" value="" id="searchID" name="search" placeholder="Search" width="60" >
-                        <input type="checkbox"  name="byRoomName"   checked  >By Room No
-                        <input type="checkbox"  name="byBedNo"  checked >By Bed No
-                        <input hidden type="submit" class="btn-primary" value="search">
-                    </form>
+                    <table>
+                        <tr>
+                            <td width="500">
+                                <h2>Active List of Bookings</h2>
+
+                                <?php
+
+                                echo "<table border='2px'>";
+
+                                echo "<th    style='width: 50px' > <input type='checkbox'  id='checkall'>All</th>";
 
 
+                                echo "<th> Serial </th><th> ID </th> <th> Customer Name </th> <th> Package </th> <th> Check In </th> <th> Check Out </th> <th>Rooms </th> <th> Adults </th> <th>Childrens</th> <th> Persons </th> <th> Price </th><th> Action </th>";
 
-                    <?php
+                                foreach($someData as $oneData){  ########### Traversing $someData is Required for pagination  #############
 
-                    echo "<table class='table table-bordered table-striped' border='5px' >";
-                    echo "<th> serial </th>";
-                    echo "<th> Id </th>";
-                    echo "<th> Room No </th>";
-                    echo "<th> Room Name </th>";
-                    echo "<th> Room Size </th>";
-                    echo "<th> Bed No </th>";
-                    echo "<th> Rate </th>";
-                    echo "<th> Description </th>";
-                    echo "<th> File Path </th>";
-                    echo "<th> Action </th>";
-                    foreach($allRoom as $oneRoom){      ########### Traversing $someData is Required for pagination  #############
-                        echo "<tr style='height: 40px'>";
-                        echo "<td>".$serial."</td>";
-                        echo "<td> $oneRoom->id </td>";
-                        echo "<td>".$oneRoom->room_no ."</td>";
-                        echo "<td>".$oneRoom-> room_name."</td>";
-                        echo "<td>".$oneRoom->room_size ."</td>";
-                        echo "<td>".$oneRoom->bed_no ."</td>";
-                        echo "<td>".$oneRoom-> rate."</td>";
-                        echo "<td>".$oneRoom->description ."</td>";
-                        echo "<td> <img width=\"150\" height=\"100\" src='../../../resource/assets/img/room/".$oneRoom->file_path."'  ></td>";
-                        echo "<td>";
-                        echo "<a href='room_details.php?id=$oneRoom->id'><button class='btn btn-info'>View</button></a> ";
-                        echo "<a href='room_edit.php?id=$oneRoom->id'><button class='btn btn-primary'>Edit</button></a> ";
-                        echo "<a href='room_trash.php?id=$oneRoom->id'><button class='btn btn-warning'>Trash</button></a> ";
-                        echo "<a href='room_delete.php?id=$oneRoom->id'><button class='btn btn-danger'>Delete</button></a> ";
-                        echo "</td>";
-                        echo "</tr>";
-                        $serial++;
-                    }
-                    echo "</table>";
-                    ?>
+                                    echo "<tr style='height: 40px'>";
+
+                                    echo "<td  style='align-content: center'><input type='checkbox' name='mark[]' value='$oneData->id'></td>";
+
+                                    echo "<td> $serial</td>";
+                                    echo "<td> $oneData->id </td>";
+                                    echo "<td> $oneData->customer_name </td>";
+                                    echo "<td> $oneData->package_info </td>";
+                                    echo "<td> $oneData->check_in </td>";
+                                    echo "<td> $oneData->check_out </td>";
+                                    echo "<td> $oneData->rooms </td>";
+                                    echo "<td> $oneData->adult </td>";
+                                    echo "<td> $oneData->children </td>";
+                                    echo "<td> $oneData->person </td>";
+                                    echo "<td> $oneData->price </td>";
+
+                                    echo "<td>
+            <a href='view.php?id=$oneData->id'><button class='btn btn-info' role='button'>View</button></a>
+            <a href='edit.php?id=$oneData->id'><button class='btn btn-info' role='button'>Edit</button></a>
+            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
+
+
+        </td>";
+
+                                    echo "</tr>";
+                                    $serial++;
+                                } //end of foreach loop
+
+                                echo "</table>";
+                                ?>
+                                <!--  ######################## pagination code block#2 of 2 start ###################################### -->
+                                <div align="left" class="container">
+                                    <ul class="pagination">
+
+                                        <?php
+
+                                        $pageMinusOne  = $page-1;
+                                        $pagePlusOne  = $page+1;
+                                        if($page>$pages) Utility::redirect("index_booking.php?Page=$pages");
+
+                                        if($page>1)  echo "<li><a href='index_booking.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+                                        for($i=1;$i<=$pages;$i++)
+                                        {
+                                            if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
+                                            else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
+
+                                        }
+                                        if($page<$pages) echo "<li><a href='index_booking.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+
+                                        ?>
+
+                                        <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
+                                            <?php
+                                            if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
+                                            else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
+
+                                            if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
+                                            else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
+
+                                            if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
+                                            else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
+
+                                            if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
+                                            else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
+
+                                            if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
+                                            else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
+
+                                            if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
+                                            else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
+                                            ?>
+                                        </select>
+                                    </ul>
+                                </div>
+                                <!--  ######################## pagination code block#2 of 2 end ###################################### -->
                 </div>
             </div>
         </div>
     </div>
-    <!--  ######################## pagination code block#2 of 2 start ###################################### -->
-    <div align="left" class="container">
-        <ul class="pagination">
 
-            <?php
+    <footer>
+        <hr>
 
-            $pageMinusOne  = $page-1;
-            $pagePlusOne  = $page+1;
-            if($page>$pages) Utility::redirect("view_room.php?Page=$pages");
-
-            if($page>1)  echo "<li><a href='view_room.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
-            for($i=1;$i<=$pages;$i++)
-            {
-                if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
-                else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
-
-            }
-            if($page<$pages) echo "<li><a href='view_room.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
-            ?>
-            <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
-                <?php
-                if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
-
-                if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
-                else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
-
-                if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
-
-                if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
-
-                if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
-
-                if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
-                else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
-                ?>
-            </select>
-        </ul>
-    </div>
-    <!--  ######################## pagination code block#2 of 2 end ###################################### -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" >
-
-                <a href="pdf.php" class="btn btn-primary" role="button">Download as PDF</a>
-                <a href="xl.php" class="btn btn-primary" role="button">Download as XL</a>
-                <a href="email.php?list=1" class="btn btn-primary" role="button">Email to friend</a>
-
-            </div>
-        </div>
-    </div>
-        <footer>
-            <hr>
-
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
+</div>
 </div>
 </div>
 

@@ -20,7 +20,7 @@ if(!$status) {
     return;
 }
 $room = new Room();
-$allRoom = $room->index1("obj");
+$allRoom = $room->trash("obj");
 
 ################## search  block 1 of 5 start ##################
 if(isset($_REQUEST['search']) )$allRoom =  $room->search($_REQUEST);
@@ -28,27 +28,18 @@ $availableKeywords=$room->getAllKeywords();
 $comma_separated_keywords= '"'.implode('","',$availableKeywords).'"';
 ################## search  block 1 of 5 end ##################
 
-
-
-
-
 ######################## pagination code block#1 of 2 start ######################################
 $recordCount= count($allRoom);
-
-
 if(isset($_REQUEST['Page']))   $page = $_REQUEST['Page'];
 else if(isset($_SESSION['Page']))   $page = $_SESSION['Page'];
 else   $page = 1;
 $_SESSION['Page']= $page;
-
 if(isset($_REQUEST['ItemsPerPage']))   $itemsPerPage = $_REQUEST['ItemsPerPage'];
 else if(isset($_SESSION['ItemsPerPage']))   $itemsPerPage = $_SESSION['ItemsPerPage'];
 else   $itemsPerPage = 3;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
-
 $pages = ceil($recordCount/$itemsPerPage);
 $allRoom = $room->indexPaginator($page,$itemsPerPage);
-
 $serial = (($page-1) * $itemsPerPage) +1;
 
 ####################### pagination code block#1 of 2 end #########################################
@@ -220,7 +211,7 @@ if(isset($_REQUEST['search']) ) {
                 <div class="col-md-12">
                     <div class="text-center" style="padding: 8px">
                         <a href='create_room.php'><button class='btn btn-info'>Add Room </button></a>
-                        <a href='#'><button class='btn btn-info'>Trash List</button></a>
+                        <a href='view_room.php'><button class='btn btn-info'>Room List</button></a>
                     </div>
 
                     <form id="searchForm" action="view_room.php"  method="get">
@@ -257,10 +248,9 @@ if(isset($_REQUEST['search']) ) {
                         echo "<td>".$oneRoom->description ."</td>";
                         echo "<td> <img width=\"150\" height=\"100\" src='../../../resource/assets/img/room/".$oneRoom->file_path."'  ></td>";
                         echo "<td>";
-                        echo "<a href='room_details.php?id=$oneRoom->id'><button class='btn btn-info'>View</button></a> ";
-                        echo "<a href='room_edit.php?id=$oneRoom->id'><button class='btn btn-primary'>Edit</button></a> ";
-                        echo "<a href='room_trash.php?id=$oneRoom->id'><button class='btn btn-warning'>Trash</button></a> ";
-                        echo "<a href='room_delete.php?id=$oneRoom->id'><button class='btn btn-danger'>Delete</button></a> ";
+                        echo "<a href='room_recover.php?id=$oneRoom->id'><button class='btn btn-info'>Recover</button></a> ";
+                        echo "<a href='room_delete.php?id=$oneRoom->id'><button class='btn btn-primary'>Delete</button></a> ";
+
                         echo "</td>";
                         echo "</tr>";
                         $serial++;
@@ -271,81 +261,83 @@ if(isset($_REQUEST['search']) ) {
             </div>
         </div>
     </div>
-    <!--  ######################## pagination code block#2 of 2 start ###################################### -->
-    <div align="left" class="container">
-        <ul class="pagination">
+    <footer>
+        <hr>
 
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
+</div>
+</div>
+</div>
+
+
+
+
+<!--  ######################## pagination code block#2 of 2 start ###################################### -->
+<div align="left" class="container">
+    <ul class="pagination">
+
+        <?php
+
+        $pageMinusOne  = $page-1;
+        $pagePlusOne  = $page+1;
+        if($page>$pages) Utility::redirect("view_room.php?Page=$pages");
+
+        if($page>1)  echo "<li><a href='view_room.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+        for($i=1;$i<=$pages;$i++)
+        {
+            if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
+            else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
+
+        }
+        if($page<$pages) echo "<li><a href='view_room.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+
+        ?>
+
+        <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
             <?php
+            if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
+            else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
 
-            $pageMinusOne  = $page-1;
-            $pagePlusOne  = $page+1;
-            if($page>$pages) Utility::redirect("view_room.php?Page=$pages");
+            if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
+            else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
 
-            if($page>1)  echo "<li><a href='view_room.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
-            for($i=1;$i<=$pages;$i++)
-            {
-                if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
-                else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
+            if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
+            else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
 
-            }
-            if($page<$pages) echo "<li><a href='view_room.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+            if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
+            else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
+
+            if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
+            else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
+
+            if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
+            else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
             ?>
-            <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
-                <?php
-                if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
+        </select>
+    </ul>
+</div>
+<!--  ######################## pagination code block#2 of 2 end ###################################### -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" >
 
-                if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
-                else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
+            <a href="pdf.php" class="btn btn-primary" role="button">Download as PDF</a>
+            <a href="xl.php" class="btn btn-primary" role="button">Download as XL</a>
+            <a href="email.php?list=1" class="btn btn-primary" role="button">Email to friend</a>
 
-                if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
-
-                if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
-
-                if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
-
-                if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
-                else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
-                ?>
-            </select>
-        </ul>
-    </div>
-    <!--  ######################## pagination code block#2 of 2 end ###################################### -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" >
-
-                <a href="pdf.php" class="btn btn-primary" role="button">Download as PDF</a>
-                <a href="xl.php" class="btn btn-primary" role="button">Download as XL</a>
-                <a href="email.php?list=1" class="btn btn-primary" role="button">Email to friend</a>
-
-            </div>
         </div>
     </div>
-        <footer>
-            <hr>
-
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            <p>© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-        </footer>
-    </div>
 </div>
-</div>
-
-
-
-
-
 
 </body>
 </html>
 
 <!-- required for search, block 5 of 5 start -->
 <script type="text/javascript" language="javascript">
+
     $(function() {
         var availableTags = [
 

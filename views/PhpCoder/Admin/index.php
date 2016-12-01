@@ -135,8 +135,6 @@ if(!$status) {
         </div>
       </div>
     </div>
-    
-
     <div class="sidebar-nav">
     <ul>
     <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Dashboard<i class="fa fa-collapse"></i></a></li>
@@ -145,7 +143,6 @@ if(!$status) {
             <li ><a href="user_list.php"><span class="fa fa-caret-right"></span> User Management</a></li>
             <li ><a href="view_room.php"><span class="fa fa-caret-right"></span> Room Management</a></li>
             <li><a href="admin_list.php"><span class="fa fa-caret-right"></span> Admin Management </a> </li>
-            <li ><a href="#"><span class="fa fa-caret-right"></span> Booking Management</a></li>
             <li ><a href="calendar.html"><span class="fa fa-caret-right"></span> Calendar</a></li>
     </ul></li>
 
@@ -371,6 +368,6 @@ if(!$status) {
             $('.demo-cancel-click').click(function(){return false;});
         });
     </script>
-    
-  
+
+
 </body></html>

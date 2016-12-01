@@ -66,7 +66,7 @@ class Room extends DB{
             Message::setMessage("Success ! Data has been inserted Successfully :)");
         else
             Message::setMessage("Failed ! Data has not been inserted Successfully ):");
-        Utility::redirect('index_booking.php');
+        Utility::redirect('view_room.php');
 
     }
 
@@ -137,8 +137,8 @@ class Room extends DB{
     }
 
     public function recover(){
-        $sql = "Update birthday SET is_deleted='No' where id=".$this->id;
-        $STH = $this->DBH->prepare($sql);
+        $sql = "Update room SET is_deleted='No' where id=".$this->id;
+        $STH = $this->conn->prepare($sql);
         $STH->execute();
         Utility::redirect('trashed.php');
     }// end of recover();
@@ -147,9 +147,9 @@ class Room extends DB{
 
         $start = (($page-1) * $itemsPerPage);
 
-        $sql = "SELECT * from birthday  WHERE is_deleted = 'No' LIMIT $start,$itemsPerPage";
+        $sql = "SELECT * from room  WHERE is_deleted = 'No' LIMIT $start,$itemsPerPage";
 
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
 
         $STH->setFetchMode(PDO::FETCH_OBJ);
 
@@ -161,9 +161,9 @@ class Room extends DB{
 
         $start = (($page-1) * $itemsPerPage);
 
-        $sql = "SELECT * from birthday  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
+        $sql = "SELECT * from room  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
 
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
 
         $STH->setFetchMode(PDO::FETCH_OBJ);
 
@@ -173,11 +173,11 @@ class Room extends DB{
 
     public function search($requestArray){
         $sql = "";
-        if( isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND (`name` LIKE '%".$requestArray['search']."%' OR `birthday` LIKE '%".$requestArray['search']."%')";
-        if(isset($requestArray['byTitle']) && !isset($requestArray['byAuthor']) ) $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND `name` LIKE '%".$requestArray['search']."%'";
-        if(!isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No' AND `birthday` LIKE '%".$requestArray['search']."%'";
+        if( isset($requestArray['byRoomName']) && isset($requestArray['byBedNo']) )  $sql = "SELECT * FROM `room` WHERE `is_deleted` ='No' AND (`room_name` LIKE '%".$requestArray['search']."%' OR `bed_no` LIKE '%".$requestArray['search']."%')";
+        if(isset($requestArray['byRoomName']) && !isset($requestArray['byBedNo']) ) $sql = "SELECT * FROM `room` WHERE `is_deleted` ='No' AND `room_name` LIKE '%".$requestArray['search']."%'";
+        if(!isset($requestArray['byRoomName']) && isset($requestArray['byBedNo']) )  $sql = "SELECT * FROM `room` WHERE `is_deleted` ='No' AND `bed_no` LIKE '%".$requestArray['search']."%'";
 
-        $STH  = $this->DBH->query($sql);
+        $STH  = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $allData = $STH->fetchAll();
         return $allData;
@@ -187,22 +187,22 @@ class Room extends DB{
     {
         $_allKeywords = array();
 //        $WordsArr = array();
-        $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No'";
+        $sql = "SELECT * FROM `room` WHERE `is_deleted` ='No'";
 
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         // for each search field block start
         $allData= $STH->fetchAll();
         foreach ($allData as $oneData) {
-            $_allKeywords[] = trim($oneData->name);
+            $_allKeywords[] = trim($oneData->room_name);
         }
 
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
 
         $allData= $STH->fetchAll();
         foreach ($allData as $oneData) {
-            $eachString= strip_tags($oneData->name);
+            $eachString= strip_tags($oneData->room_name);
             $eachString=trim( $eachString);
             $eachString= preg_replace( "/\r|\n/", " ", $eachString);
             $eachString= str_replace("&nbsp;","",  $eachString);
@@ -215,18 +215,18 @@ class Room extends DB{
         // for each search field block end
 
         // for each search field block start
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $allData= $STH->fetchAll();
         foreach ($allData as $oneData) {
-            $_allKeywords[] = trim($oneData->birthday);
+            $_allKeywords[] = trim($oneData->bed_no);
         }
-        $STH = $this->DBH->query($sql);
+        $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $allData= $STH->fetchAll();
         foreach ($allData as $oneData) {
 
-            $eachString= strip_tags($oneData->birthday);
+            $eachString= strip_tags($oneData->bed_no);
             $eachString=trim( $eachString);
             $eachString= preg_replace( "/\r|\n/", " ", $eachString);
             $eachString= str_replace("&nbsp;","",  $eachString);

@@ -24,7 +24,7 @@ class Auth extends DB{
 
     public function is_exist(){
 
-        $query="SELECT * FROM `users` WHERE `users`.`email` =:email";
+        $query="SELECT * FROM `users` WHERE `email` =:email";
         $result=$this->conn->prepare($query);
         $result->execute(array(':email'=>$this->email));
 

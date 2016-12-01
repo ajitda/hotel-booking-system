@@ -17,4 +17,4 @@ Message::message("
                 <div class=\"alert alert-success\">
                             <strong>Logout!</strong> You have been logged out successfully.
                 </div>");
-return Utility::redirect('../Profile/signup.php');
+return Utility::redirect('../../../../home.php');

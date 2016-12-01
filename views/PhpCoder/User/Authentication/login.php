@@ -17,7 +17,7 @@ if($status){
                             <strong>Welcome!</strong> You have successfully logged in.
                 </div>");
     
-    return Utility::redirect('../index_booking.php');
+    return Utility::redirect('../../../../user.php');
 
 }else{
     Message::message("
