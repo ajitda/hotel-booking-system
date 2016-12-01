@@ -191,24 +191,22 @@ $serial = 1;
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="text-center">
+                        <a href='admin_list.php'><button class='btn btn-info'>Admin List</button></a>
+                        <a href='create_admin.php.php'><button class='btn btn-info'>Create Admin</button></a>
+                    </div>
                 <?php
-
                 $serial=1;
-
                 echo "<table class='table table-bordered table-striped' border='5px' >";
-
                 echo "<th> serial </th>";
                 echo "<th> ID </th>";
                 echo "<th> First Name </th>";
                 echo "<th> Last Name </th>";
                 echo "<th> Email </th>";
                 echo "<th> Action </th>";
-
-
                 foreach($allData as $oneData){      ########### Traversing $someData is Required for pagination  #############
                     echo "<tr style='height: 40px'>";
                     echo "<td>".$serial."</td>";
-
                     echo "<td>".$oneData->id ."</td>";
                     echo "<td>".$oneData->first_name ."</td>";
                     echo "<td>".$oneData->last_name ."</td>";
@@ -221,7 +219,6 @@ $serial = 1;
                     $serial++;
                 }
                 echo "</table>";
-
                 ?>
                 </div>
             </div>
