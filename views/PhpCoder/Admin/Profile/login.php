@@ -83,7 +83,7 @@ use App\BITM\PhpCoder\Message\Message;
                             <form role="form" action="../Authentication/login.php" method="post" class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="email">Email</label>
-                                    <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                    <input type="text" name="admin_email" placeholder="Email..." class="form-email form-control" id="form-email">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Password</label>

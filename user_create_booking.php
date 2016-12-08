@@ -31,8 +31,8 @@ if(!$status) {
                 <h1>Book Your Room Now</h1>
             <form role="form" action="views/PhpCoder/BlueOcean/Booking/store_booking.php" method="post" class="boooking-form">
                 <div class="form-group">
-                    <label for="form-customer_name">Customer Name :</label>
-                    <input type="text" name= "customer_name" placeholder="Enter your name..." class="form-customer_name form-control" id="form-customer_name">
+                    <label for="form-customer_name">Customer Email :</label>
+                    <input type="email" name= "customer_name" value="<?php echo $_SESSION['email']; ?>" class="form-customer_name form-control" id="form-customer_name" required>
                 </div>
                 <div class="form-group">
                     <label for="package_info">Package : </label>
@@ -41,8 +41,6 @@ if(!$status) {
                         <option >Shopping</option>
                         <option >Business</option></select>
                 </div>
-
-
                 <div class="form-group">
                     <label for="dateField">Check In: </label>
                     <!--Check In <input type="text"  name="check_in"  class="form-check_in form-control" id="datepicker"> -->

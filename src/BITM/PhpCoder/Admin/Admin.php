@@ -32,8 +32,8 @@ class Admin extends DB{
         if(array_key_exists('last_name',$data)){
             $this->lastName=$data['last_name'];
         }
-        if(array_key_exists('email',$data)){
-            $this->email=$data['email'];
+        if(array_key_exists('admin_email',$data)){
+            $this->email=$data['admin_email'];
         }
         if(array_key_exists('phone',$data)){
             $this->phone=$data['phone'];

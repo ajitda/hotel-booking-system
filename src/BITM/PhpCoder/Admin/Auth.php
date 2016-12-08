@@ -13,8 +13,8 @@ class Auth extends DB{
     }
 
     public function prepare($data = Array()){
-        if (array_key_exists('email', $data)) {
-            $this->email = $data['email'];
+        if (array_key_exists('admin_email', $data)) {
+            $this->email = $data['admin_email'];
         }
         if (array_key_exists('password', $data)) {
             $this->password = md5($data['password']);
@@ -50,7 +50,7 @@ class Auth extends DB{
     }
 
     public function logged_in(){
-        if ((array_key_exists('email', $_SESSION)) && (!empty($_SESSION['email']))) {
+        if ((array_key_exists('admin_email', $_SESSION)) && (!empty($_SESSION['admin_email']))) {
             return TRUE;
         } else {
             return FALSE;
@@ -58,7 +58,7 @@ class Auth extends DB{
     }
 
     public function log_out(){
-        $_SESSION['email']="";
+        $_SESSION['admin_email']="";
         return TRUE;
     }
 }

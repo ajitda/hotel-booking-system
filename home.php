@@ -49,17 +49,17 @@ $status = $auth->prepare($_SESSION)->logged_in();
 		<div class="line1"><div class="wrapper line2">
 			<div class="col1">
 				<h2><img src="resource/assets/images/title_marker1.jpg" alt="">Best Rates</h2>
-				<p class="pad_bot1">Blue Ocean Hotel is one of <a href="http://blog.templatemonster.com/free-website-templates/" target="_blank">free website templates</a> created by TemplateMonster.com team. This website template is optimized for 1280X1024 screen resolution. It is also XHTML &amp; CSS valid.</p>
+				<p class="pad_bot1">Blue Ocean Hotel is one of <a href="http://blog.templatemonster.com/free-website-templates/" target="_blank">by phpCoder Team</a> Best Hotel management offered by phpcoder Team. From BITM PHP F2 course. Batch 35.</p>
 				<a href="#" class="color1">Read More</a>
 			</div>
 			<div class="col1 pad_left1">
 				<h2><img src="resource/assets/images/title_marker2.jpg" alt="">Hotel Guide</h2>
-				<p class="pad_bot1"><a href="http://blog.templatemonster.com/2011/10/24/free-website-template-accordion-hotel/" target="_blank" rel="nofollow">Blue Ocean Hotel Template</a> goes with 2 packages. PSD source files are available for free for the registered members of Templates.com. Basic package is available for anyone without registration.</p>
+				<p class="pad_bot1"><a href="http://blog.templatemonster.com/2011/10/24/free-website-template-accordion-hotel/" target="_blank" rel="nofollow"> </a> Blue Ocean Hotel is available 24/7. It's a best comfortable zone for everyone.</p>
 				<a href="#" class="color1">Read More</a>
 			</div>
 			<div class="col1 pad_left1">
 				<h2><img src="resource/assets/images/title_marker3.jpg" alt="">Packages</h2>
-				<p class="pad_bot1">This Blue Ocean Hotel website template has several pages: <a href="home.php">About Us</a>, <a href="Services.html">Services</a>, <a href="Booking.html">Booking</a>, <a href="Rooms.html">Our Rooms</a>, <a href="Locations.html">Contact Us</a> (note that contact us form – doesn’t work). Aliquip ex ea commodo consequat.</p>
+				<p class="pad_bot1">This Blue Ocean Hotel website  <a href="home.php">About Us</a>, <a href="Services.html">Services</a>, <a href="Booking.html">Booking</a>, <a href="Rooms.html">Our Rooms</a>, <a href="Locations.html">Contact Us</a> contact us for more</p>
 				<a href="#" class="color1">Read More</a>
 			</div>
 		</div></div>
