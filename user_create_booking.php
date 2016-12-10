@@ -29,10 +29,10 @@ if(!$status) {
 
             <div class="booking-form-section">
                 <h1>Book Your Room Now</h1>
-            <form role="form" action="views/PhpCoder/BlueOcean/Booking/store_booking.php" method="post" class="boooking-form">
+            <form role="form" action="views/PhpCoder/BlueOcean/Booking/store_booking.php" "mailto:someone@example.com" method="post" class="boooking-form">
                 <div class="form-group">
                     <label for="form-customer_name">Customer Email :</label>
-                    <input type="email" name= "customer_name" value="<?php echo $_SESSION['email']; ?>" class="form-customer_name form-control" id="form-customer_name" required>
+                    <input type="email" name= "customer_name" value="<?php echo $_SESSION['email']; ?>" class="form-customer_name form-control" id="form-customer_name" disabled>
                 </div>
                 <div class="form-group">
                     <label for="package_info">Package : </label>
@@ -64,7 +64,7 @@ if(!$status) {
 
                 <div class="form-group">
                     <label for="adult">Adults : </label>
-                    <select name="adult" >
+                    <select name="adult" id="adult">
                         <option >1</option>
                         <option >2</option>
                         <option >3</option>
@@ -89,10 +89,10 @@ if(!$status) {
                         <option >3</option></select>
                 </div>
 
-                <div class="form-group">
-                     <label class="sr-only" for="form-price">Price : </label>
-                    <input type="number" name="price" class="form-price form-control" id="form-price">
-                </div>
+<!--                <div class="form-group">-->
+<!--                     <label class="sr-only" for="form-price">Price : </label>-->
+<!--                    <input type="number" name="price" class="form-price form-control" id="form-price" disabled>-->
+<!--                </div>-->
                 <button type="submit" class="btn">Book Now</button>
             </form>
             </div>

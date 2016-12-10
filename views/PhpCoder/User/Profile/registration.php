@@ -25,9 +25,9 @@ if($status){
     $mail->AddAddress($_POST['email']);
     $mail->Username="bitm.b35.charles@gmail.com";               //       your gmail address
     $mail->Password="bitm.b35";                        //       your gmail password
-    $mail->SetFrom('bitm.php22@gmail.com','User Management');
-    $mail->AddReplyTo("bitm.php22@gmail.com","User Management");
-    $mail->Subject    = "Your Account Activation Link";
+    $mail->SetFrom('bitm.php22@gmail.com','Php Coder');
+    $mail->AddReplyTo("bitm.php22@gmail.com","Php Coder");
+    $mail->Subject= "Your Account Activation Link";
     $message =  "Please click this link to verify your account: 
        http://localhost/phpcoder_finalproject_b35/views/PhpCoder/User/Profile/emailverification.php?email=".$_POST['email']."&email_token=".$_POST['email_token'];
     $mail->MsgHTML($message);
