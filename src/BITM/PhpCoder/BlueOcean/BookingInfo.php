@@ -139,14 +139,11 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
 
     }// end of indexPaginator();
 
-    public function trash(){
+    public function confirm(){
 
         $sql = "Update `booking_info` SET is_deleted=NOW() where id=".$this->id;
-
         $STH = $this->conn->prepare($sql);
-
         $STH->execute();
-
         Utility::redirect('index_booking.php');
 
 

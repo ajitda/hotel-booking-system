@@ -43,12 +43,12 @@ $serial = (($page-1) * $itemsPerPage) +1;
                 <div class="col-md-12">
                     <div class="text-center" style="padding: 8px">
                         <a href='create_room.php'><button class='btn btn-info'>Add Room </button></a>
-                        <a href='#'><button class='btn btn-info'>Trash List</button></a>
+                        <a href='#'><button class='btn btn-info'>Confirmed List</button></a>
                     </div>
                     <?php
 
                     echo "<table class='table table-bordered table-striped' border='2px'>";
-                    echo "<th> Serial </th><th> ID </th> <th> Customer Name </th> <th> Package </th> <th> Check In </th> <th> Check Out </th> <th>Rooms </th> <th> Adults </th> <th>Childrens</th> <th> Persons </th> <th> Price </th><th> Action </th>";
+                    echo "<th> Serial </th><th> ID </th> <th> Customer Email </th> <th> Package </th> <th> Check In </th> <th> Check Out </th> <th>Rooms </th> <th> Adults </th> <th>Childrens</th> <th> Persons </th> <th> Price </th><th> Action </th>";
                     foreach($allRoom as $oneData){  ########### Traversing $someData is Required for pagination  #############
                         echo "<tr style='height: 40px'>";
                         echo "<td> $serial</td>";
@@ -65,7 +65,7 @@ $serial = (($page-1) * $itemsPerPage) +1;
                         echo "<td>
             <a href='view.php?id=$oneData->id'><button class='btn btn-info' role='button'>View</button></a>
             <a href='edit.php?id=$oneData->id'><button class='btn btn-info' role='button'>Edit</button></a>
-            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Trash</button></a>
+            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Confirm</button></a>
             <a href='delete_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
         </td>";
 
@@ -81,53 +81,62 @@ $serial = (($page-1) * $itemsPerPage) +1;
         </div>
     </div>
     <!--  ######################## pagination code block#2 of 2 start ###################################### -->
-    <div align="left" class="container">
-        <ul class="pagination">
-
-            <?php
-
-            $pageMinusOne  = $page-1;
-            $pagePlusOne  = $page+1;
-            if($page>$pages) Utility::redirect("bookings.php?Page=$pages");
-
-            if($page>1)  echo "<li><a href='bookings.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
-            for($i=1;$i<=$pages;$i++)
-            {
-                if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
-                else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
-            }
-            if($page<$pages) echo "<li><a href='bookings.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
-            ?>
-            <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
-                <?php
-                if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
-                if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
-                else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
-                if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
-                if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
-                if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
-                else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
-
-                if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
-                else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
-                ?>
-            </select>
-        </ul>
-    </div>
-    <!--  ######################## pagination code block#2 of 2 end ###################################### -->
-    <div class="container">
+    <div align="left" class="container pagination_selection">
         <div class="row">
-            <div class="col-md-12" >
-                <a href="pdf.php" class="btn btn-primary" role="button">Download as PDF</a>
-                <a href="xl.php" class="btn btn-primary" role="button">Download as XL</a>
-                <a href="email.php?list=1" class="btn btn-primary" role="button">Email to friend</a>
+            <div class="col-md-9 col-sm-9">
+                <ul class="pagination">
+                    <?php
+                    $pageMinusOne=$page-1;
+                    $pagePlusOne = $page+1;
+                    if($page>$pages) Utility::redirect("bookings.php?Page=$pages");
+                    if($page>1) echo "<li><a href='bookings.php?Page=$pageMinusOne'>" . "Previous" . '</a></li>';
+                    for($i=1;$i<=$pages;$i++)
+                    {
+                        if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
+                        else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
+                    }
+                    if($page<$pages) echo "<li><a href='bookings.php?Page=$pagePlusOne'>" . "Next" . '</a></li>';
+                    ?>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="select_page">
+                    <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
+                        <?php
+                        if($itemsPerPage==3 ) echo '<option value="?ItemsPerPage=3" selected >Show 3 Items Per Page</option>';
+                        else echo '<option  value="?ItemsPerPage=3">Show 3 Items Per Page</option>';
 
+                        if($itemsPerPage==4 )  echo '<option  value="?ItemsPerPage=4" selected >Show 4 Items Per Page</option>';
+                        else  echo '<option  value="?ItemsPerPage=4">Show 4 Items Per Page</option>';
+
+                        if($itemsPerPage==5 )  echo '<option  value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
+                        else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
+
+                        if($itemsPerPage==6 )  echo '<option  value="?ItemsPerPage=6"selected >Show 6 Items Per Page</option>';
+                        else echo '<option  value="?ItemsPerPage=6">Show 6 Items Per Page</option>';
+
+                        if($itemsPerPage==10 )   echo '<option  value="?ItemsPerPage=10"selected >Show 10 Items Per Page</option>';
+                        else echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
+
+                        if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15"selected >Show 15 Items Per Page</option>';
+                        else    echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
+                        ?>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
+    <!--  ######################## pagination code block#2 of 2 end ###################################### -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="pdf.php" class="btn btn-primary" role="button">Download as PDF</a>
+            <a href="xl.php" class="btn btn-primary" role="button">Download as XL</a>
+            <a href="email.php?list=1" class="btn btn-primary" role="button">Email to friend</a>
+        </div>
+    </div>
+
+
 
     <?php include('admin_footer.php'); ?>
 <!-- required for search, block 5 of 5 start -->

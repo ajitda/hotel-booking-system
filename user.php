@@ -21,9 +21,19 @@ if(!$status) {
 <?php include('header.php');  ?>
     <div class="box1">
         <div class="col-md-12">
-            <h2>Hello <?php echo "$singleUser->first_name $singleUser->last_name"?>! <span class="logout"> <a href= "views/PhpCoder/User/Authentication/logout.php" > LOGOUT </a></span></h2>
 
+            <h2>Hello <?php echo "$singleUser->first_name $singleUser->last_name"?>! <span class="logout"> <a href= "views/PhpCoder/User/Authentication/logout.php" > LOGOUT </a></span></h2>
+             <?php echo Message::getMessage(); ?>
         </div>
 
     </div>
+    <script type="text/javascript">
+
+        $(function(){
+            setTimeout(function(){
+                $("#almessage").fadeOut('Slow')
+            }, 5000);
+        });
+
+    </script>
 <?php include('footer.php'); ?>

@@ -32,7 +32,7 @@ $status = $auth->prepare($_SESSION)->logged_in();
 			<a href="views/PhpCoder/User/Profile/signup.php"><button>SignUp</button> </a>
 		</form>
 	<?php }else{ ?>
-				<h2>Hello <?php echo "$singleUser->first_name $singleUser->last_name"?>! <span class="logout"> <a href= "views/PhpCoder/User/Authentication/logout.php" > LOGOUT </a></span></h2>
+				<h2>Hello <a href="user.php" class="home_user_name"><?php echo "$singleUser->first_name $singleUser->last_name"?>!</a> <span class="logout"> <a href= "views/PhpCoder/User/Authentication/logout.php" > LOGOUT </a></span></h2>
 	<?php }?>
 
 </div>

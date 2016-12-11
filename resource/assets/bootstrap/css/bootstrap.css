@@ -6798,3 +6798,6 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.pagination_selection .select_page {
+  margin: 20px 0;
+}
