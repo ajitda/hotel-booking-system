@@ -2,10 +2,11 @@
 //if(!isset($_SESSION) )session_start();
 require_once("../../../../vendor/autoload.php");
 use App\BITM\PhpCoder\BlueOcean\BookingInfo;
-
+use App\BITM\PhpCoder\Utility\Utility;
 $obj_bookingInfo= new BookingInfo();
 $obj_bookingInfo->prepare($_POST);
 $obj_bookingInfo->store();
+return Utility::redirect('../../../../rooms.php');
 require '../../../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 $mail = new PHPMailer();
 $mail->IsSMTP();

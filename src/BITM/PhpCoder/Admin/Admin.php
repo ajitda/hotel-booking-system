@@ -5,7 +5,6 @@ use App\BITM\PhpCoder\Utility\Utility;
 use App\BITM\PhpCoder\Model\Database as DB;
 use PDO;
 
-
 class Admin extends DB{
     //public $table="admin";
     public $firstName="";

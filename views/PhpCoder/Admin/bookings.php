@@ -2,6 +2,7 @@
 <?php include('admin_sidebar.php'); ?>
 <?php
 use App\BITM\PhpCoder\BlueOcean\BookingInfo;
+use App\BITM\PhpCoder\Utility\Utility;
 $room = new BookingInfo();
 $allRoom = $room->index("obj");
 
@@ -64,7 +65,8 @@ $serial = (($page-1) * $itemsPerPage) +1;
                         echo "<td>
             <a href='view.php?id=$oneData->id'><button class='btn btn-info' role='button'>View</button></a>
             <a href='edit.php?id=$oneData->id'><button class='btn btn-info' role='button'>Edit</button></a>
-            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
+            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Trash</button></a>
+            <a href='delete_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
         </td>";
 
                         echo "</tr>";
@@ -86,15 +88,15 @@ $serial = (($page-1) * $itemsPerPage) +1;
 
             $pageMinusOne  = $page-1;
             $pagePlusOne  = $page+1;
-            if($page>$pages) Utility::redirect("view_room.php?Page=$pages");
+            if($page>$pages) Utility::redirect("bookings.php?Page=$pages");
 
-            if($page>1)  echo "<li><a href='view_room.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+            if($page>1)  echo "<li><a href='bookings.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
             for($i=1;$i<=$pages;$i++)
             {
                 if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
                 else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
             }
-            if($page<$pages) echo "<li><a href='view_room.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+            if($page<$pages) echo "<li><a href='bookings.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
             ?>
             <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
                 <?php
@@ -153,7 +155,6 @@ $serial = (($page-1) * $itemsPerPage) +1;
 
             }
         });
-
 
         $( "#searchID" ).autocomplete({
             select: function(event, ui) {

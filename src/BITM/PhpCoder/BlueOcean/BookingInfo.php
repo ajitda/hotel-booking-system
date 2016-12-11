@@ -153,6 +153,14 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
     }// end of trash()
 
 
+    public function delete(){
+        $sql='DELETE FROM booking_info WHERE id = '.$this->id;
+        $STH = $this->conn->prepare($sql);
+        $result = $STH->execute();
+        Utility::redirect('bookings.php');
+    }//end of delete
+
+
 
 
     }

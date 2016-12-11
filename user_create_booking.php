@@ -1,3 +1,4 @@
+<?php include('header.php');  ?>
 <?php
 if(!isset($_SESSION) )session_start();
 include_once('vendor/autoload.php');
@@ -5,7 +6,7 @@ use App\BITM\PhpCoder\User\User;
 use App\BITM\PhpCoder\User\Auth;
 use App\BITM\PhpCoder\Message\Message;
 use App\BITM\PhpCoder\Utility\Utility;
-
+use App\BITM\PhpCoder\Room\Room;
 $obj= new User();
 $obj->prepare($_SESSION);
 $singleUser = $obj->view();
@@ -17,43 +18,39 @@ if(!$status) {
     Utility::redirect('views/PhpCoder/User/Profile/signup.php');
     return;
 }
-
-//use App\BITM\PhpCoder\Room\Room;
+$objRoom = new Room();
+$objRoom->prepare($_GET);
+$oneRoom = $objRoom->view("obj");
 //
 //$room = new Room();
 //$allRoom = $room->index1("obj");
 ?>
-<?php include('header.php');  ?>
+
     <div class="box1">
         <div class="col-md-12">
 
             <div class="booking-form-section">
                 <h1>Book Your Room Now</h1>
-            <form role="form" action="views/PhpCoder/BlueOcean/Booking/store_booking.php" "mailto:someone@example.com" method="post" class="boooking-form">
+            <form role="form" action="views/PhpCoder/BlueOcean/Booking/store_booking.php" method="post" class="boooking-form">
                 <div class="form-group">
                     <label for="form-customer_name">Customer Email :</label>
-                    <input type="email" name= "customer_name" value="<?php echo $_SESSION['email']; ?>" class="form-customer_name form-control" id="form-customer_name" disabled>
+                    <input type="email" name= "customer_name" value="<?php echo $_SESSION['email']; ?>" class="form-customer_name form-control" id="form-customer_name" required>
                 </div>
                 <div class="form-group">
-                    <label for="package_info">Package : </label>
-                    <select name="package_info" id="package_info">
-                        <option >Family</option>
-                        <option >Shopping</option>
-                        <option >Business</option></select>
+                    <label for="package_info">Room No : </label>
+                    <input name="package_info" value="<?php echo $oneRoom->room_no; ?>" id="package_info">
+
                 </div>
                 <div class="form-group">
                     <label for="dateField">Check In: </label>
                     <!--Check In <input type="text"  name="check_in"  class="form-check_in form-control" id="datepicker"> -->
                     <input name="check_in" id="dateField" type="date" min="2014-01-01" disabled>
                 </div>
-
-
                 <div class="form-group">
                     <label for="dateField1">Check Out: </label>
                     <!--Check In <input type="text"  name="check_in"  class="form-check_in form-control" id="datepicker"> -->
                     <input name="check_out" id="dateField1" type="date" min="2014-01-01" disabled>
                 </div>
-
                 <div class="form-group">
                     <label for="rooms">Rooms : </label>
                     <select name="rooms" id="rooms">
@@ -61,17 +58,15 @@ if(!$status) {
                         <option >2</option>
                         <option >3</option></select>
                 </div>
-
                 <div class="form-group">
                     <label for="adult">Adults : </label>
-                    <select name="adult" id="adult">
+                    <select name="adult" >
                         <option >1</option>
                         <option >2</option>
                         <option >3</option>
                         <option >4</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="children">Childrens : </label>
                      <select name="children" id="children">
@@ -80,7 +75,6 @@ if(!$status) {
                         <option >2</option>
                         <option >3</option></select>
                 </div>
-
                 <div class="form-group">
                     <label for="person">Persons : </label>
                      <select name="person" id="person">
@@ -89,10 +83,10 @@ if(!$status) {
                         <option >3</option></select>
                 </div>
 
-<!--                <div class="form-group">-->
-<!--                     <label class="sr-only" for="form-price">Price : </label>-->
-<!--                    <input type="number" name="price" class="form-price form-control" id="form-price" disabled>-->
-<!--                </div>-->
+                <div class="form-group">
+                     <label class="sr-only" for="form-price">Price : </label>
+                    <input type="number" name="price" value="<?php echo $oneRoom->rate; ?>" class="form-price form-control" id="form-price">
+                </div>
                 <button type="submit" class="btn">Book Now</button>
             </form>
             </div>

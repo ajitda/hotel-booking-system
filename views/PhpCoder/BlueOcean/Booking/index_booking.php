@@ -88,7 +88,7 @@ echo "<table border='2px'>";
         echo "<td>
             <a href='view.php?id=$oneData->id'><button class='btn btn-info' role='button'>View</button></a>
             <a href='edit.php?id=$oneData->id'><button class='btn btn-info' role='button'>Edit</button></a>
-            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
+            <a href='../../Admin/trash_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
 
 
         </td>";
