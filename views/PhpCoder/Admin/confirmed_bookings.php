@@ -4,7 +4,7 @@
 use App\BITM\PhpCoder\BlueOcean\BookingInfo;
 use App\BITM\PhpCoder\Utility\Utility;
 $room = new BookingInfo();
-$allRoom = $room->index("obj");
+$allRoom = $room->confimed("obj");
 
 ######################## pagination code block#1 of 2 start ######################################
 $recordCount= count($allRoom);
@@ -18,7 +18,7 @@ else if(isset($_SESSION['ItemsPerPage']))   $itemsPerPage = $_SESSION['ItemsPerP
 else   $itemsPerPage = 3;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 $pages = ceil($recordCount/$itemsPerPage);
-$allRoom = $room->indexPaginator($page,$itemsPerPage);
+$allRoom = $room->confirmedPaginator($page,$itemsPerPage);
 $serial = (($page-1) * $itemsPerPage) +1;
 ####################### pagination code block#1 of 2 end #########################################
 ?>
@@ -42,7 +42,6 @@ $serial = (($page-1) * $itemsPerPage) +1;
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center" style="padding: 8px">
-                        <a href='confirmed_bookings.php'><button class='btn btn-info'>Confirmed List</button></a>
                     </div>
                     <?php
 
@@ -63,8 +62,7 @@ $serial = (($page-1) * $itemsPerPage) +1;
                         echo "<td> $oneData->price </td>";
                         echo "<td>
             <a href='view.php?id=$oneData->id'><button class='btn btn-info' role='button'>View</button></a>
-            <a href='edit.php?id=$oneData->id'><button class='btn btn-primary' role='button'>Edit</button></a>
-            <a href='trash_booking.php?id=$oneData->id'><button class='btn btn-warning' role='button'>Confirm</button></a>
+            <a href='edit.php?id=$oneData->id'><button class='btn btn-info' role='button'>Edit</button></a>
             <a href='delete_booking.php?id=$oneData->id'><button class='btn btn-danger' role='button'>Delete</button></a>
         </td>";
 
@@ -87,14 +85,14 @@ $serial = (($page-1) * $itemsPerPage) +1;
                     <?php
                     $pageMinusOne=$page-1;
                     $pagePlusOne = $page+1;
-                    if($page>$pages) Utility::redirect("bookings.php?Page=$pages");
-                    if($page>1) echo "<li><a href='bookings.php?Page=$pageMinusOne'>" . "Previous" . '</a></li>';
+                    if($page>$pages) Utility::redirect("confirmed_bookings.php?Page=$pages");
+                    if($page>1) echo "<li><a href='confirmed_bookings.php?Page=$pageMinusOne'>" . "Previous" . '</a></li>';
                     for($i=1;$i<=$pages;$i++)
                     {
                         if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
                         else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
                     }
-                    if($page<$pages) echo "<li><a href='bookings.php?Page=$pagePlusOne'>" . "Next" . '</a></li>';
+                    if($page<$pages) echo "<li><a href='confirmed_bookings.php?Page=$pagePlusOne'>" . "Next" . '</a></li>';
                     ?>
                 </ul>
             </div>
@@ -138,42 +136,42 @@ $serial = (($page-1) * $itemsPerPage) +1;
 
 
     <?php include('admin_footer.php'); ?>
-<!-- required for search, block 5 of 5 start -->
-<script type="text/javascript" language="javascript">
-    $(function() {
-        var availableTags = [
+    <!-- required for search, block 5 of 5 start -->
+    <script type="text/javascript" language="javascript">
+        $(function() {
+            var availableTags = [
 
-            <?php
-            echo $comma_separated_keywords;
-            ?>
-        ];
-        // Filter function to search only from the beginning of the string
-        $( "#searchID" ).autocomplete({
-            source: function(request, response) {
+                <?php
+                echo $comma_separated_keywords;
+                ?>
+            ];
+            // Filter function to search only from the beginning of the string
+            $( "#searchID" ).autocomplete({
+                source: function(request, response) {
 
-                var results = $.ui.autocomplete.filter(availableTags, request.term);
+                    var results = $.ui.autocomplete.filter(availableTags, request.term);
 
-                results = $.map(availableTags, function (tag) {
-                    if (tag.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
-                        return tag;
-                    }
-                });
+                    results = $.map(availableTags, function (tag) {
+                        if (tag.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
+                            return tag;
+                        }
+                    });
 
-                response(results.slice(0, 15));
+                    response(results.slice(0, 15));
 
-            }
+                }
+            });
+
+            $( "#searchID" ).autocomplete({
+                select: function(event, ui) {
+                    $("#searchID").val(ui.item.label);
+                    $("#searchForm").submit();
+                }
+            });
+
+
         });
 
-        $( "#searchID" ).autocomplete({
-            select: function(event, ui) {
-                $("#searchID").val(ui.item.label);
-                $("#searchForm").submit();
-            }
-        });
-
-
-    });
-
-</script>
-<!-- required for search, block5 of 5 end -->
+    </script>
+    <!-- required for search, block5 of 5 end -->
 

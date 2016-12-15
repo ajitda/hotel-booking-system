@@ -70,9 +70,7 @@ class BookingInfo extends DB
 
         $query = "INSERT INTO `booking_info`(`customer_name`, `package_info`, `check_in`, `check_out`, `rooms`, `adult`, `children`, `person`, `price`)
 VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :children, :person, :price)";
-
         $result = $this->conn->prepare($query);
-
         $result->execute(array(':customerName' => $this->customerName, ':packageInfo' => $this->packageInfo, ':checkIn' => $this->checkIn, ':checkOut' => $this->checkOut, ':rooms' => $this->rooms, ':adult' => $this->adult, ':children' => $this->children, ':person' => $this->person, ':price' => $this->price));
 
         if ($result) {
@@ -92,31 +90,25 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
 
     public function view($fetchMode = 'ASSOC')
     {
-
         $STH = $this->conn->query('SELECT * from `booking_info` where id='.$this->id);
-
         $fetchMode = strtoupper($fetchMode);
         if (substr_count($fetchMode, 'OBJ') > 0)
             $STH->setFetchMode(PDO::FETCH_OBJ);
         else
             $STH->setFetchMode(PDO::FETCH_ASSOC);
-
         $arrOneData = $STH->fetch();
         return $arrOneData;
     }
 
         public function index($fetchMode = 'ASSOC')
         {
-            $query = "SELECT * from `booking_info` where is_deleted = 'No'";
-
+            $query = "SELECT * from `booking_info` where is_deleted = 'No' ";
             $STH = $this->conn->query($query);
-
             $fetchMode = strtoupper($fetchMode);
             if (substr_count($fetchMode, 'OBJ') > 0)
                 $STH->setFetchMode(PDO::FETCH_OBJ);
             else
                 $STH->setFetchMode(PDO::FETCH_ASSOC);
-
             $arrOneData = $STH->fetchAll();
             return $arrOneData;
 
@@ -125,28 +117,30 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
 
 
     public function indexPaginator($page=1,$itemsPerPage=3){
-
         $start = (($page-1) * $itemsPerPage);
-
         $sql = "SELECT * from `booking_info`  WHERE is_deleted = 'No' LIMIT $start,$itemsPerPage";
-
         $STH = $this->conn->query($sql);
-
         $STH->setFetchMode(PDO::FETCH_OBJ);
-
         $arrSomeData  = $STH->fetchAll();
         return $arrSomeData;
-
     }// end of indexPaginator();
 
-    public function confirm(){
+    public function confirmedPaginator($page=0,$itemsPerPage=3){
+        $start = (($page-1) * $itemsPerPage);
+        $sql = "SELECT * from booking_info  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
+        $STH = $this->conn->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $arrSomeData  = $STH->fetchAll();
+        return $arrSomeData;
+    }// end of confirmedPaginator();
 
+
+
+    public function confirm(){
         $sql = "Update `booking_info` SET is_deleted=NOW() where id=".$this->id;
         $STH = $this->conn->prepare($sql);
         $STH->execute();
-        Utility::redirect('index_booking.php');
-
-
+        Utility::redirect('bookings.php');
     }// end of trash()
 
 
@@ -156,10 +150,20 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
         $result = $STH->execute();
         Utility::redirect('bookings.php');
     }//end of delete
-
-
-
-
+    public function confimed($fetchMode='ASSOC'){
+        $sql = "SELECT * from `booking_info` where is_deleted <> 'No' ";
+        $STH = $this->conn->query($sql);
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode,'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $arrAllData  = $STH->fetchAll();
+        return $arrAllData;
     }
+
+
+
+}
 
 ?>

@@ -144,15 +144,10 @@ class Room extends DB{
     }// end of recover();
 
     public function indexPaginator($page=0,$itemsPerPage=3){
-
         $start = (($page-1) * $itemsPerPage);
-
         $sql = "SELECT * from room  WHERE is_deleted = 'No' LIMIT $start,$itemsPerPage";
-
         $STH = $this->conn->query($sql);
-
         $STH->setFetchMode(PDO::FETCH_OBJ);
-
         $arrSomeData  = $STH->fetchAll();
         return $arrSomeData;
 
@@ -160,7 +155,6 @@ class Room extends DB{
     public function trashedPaginator($page=0,$itemsPerPage=3){
 
         $start = (($page-1) * $itemsPerPage);
-
         $sql = "SELECT * from room  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
 
         $STH = $this->conn->query($sql);

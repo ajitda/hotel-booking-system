@@ -3,8 +3,9 @@
 <?php
 
 use App\BITM\PhpCoder\Room\Room;
+use App\BITM\PhpCoder\Utility\Utility;
 $room = new Room();
-$allRoom = $room->trash("obj");
+$allRoom = $room->trashed("obj");
 
 ################## search  block 1 of 5 start ##################
 if(isset($_REQUEST['search']) )$allRoom =  $room->search($_REQUEST);
@@ -23,20 +24,16 @@ else if(isset($_SESSION['ItemsPerPage']))   $itemsPerPage = $_SESSION['ItemsPerP
 else   $itemsPerPage = 3;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 $pages = ceil($recordCount/$itemsPerPage);
-$allRoom = $room->indexPaginator($page,$itemsPerPage);
+$allRoom = $room->trashedPaginator($page,$itemsPerPage);
 $serial = (($page-1) * $itemsPerPage) +1;
 ####################### pagination code block#1 of 2 end #########################################
-
-
 ################## search  block 2 of 5 start ##################
 if(isset($_REQUEST['search']) ) {
     $allRoom = $room->search($_REQUEST);
     $serial = 1;
 }
 ################## search  block 2 of 5 end ##################
-
 ?>
-
 <div class="content">
     <div class="header">
         <div class="stats">
@@ -90,7 +87,6 @@ if(isset($_REQUEST['search']) ) {
                         echo "<td>";
                         echo "<a href='room_recover.php?id=$oneRoom->id'><button class='btn btn-info'>Recover</button></a> ";
                         echo "<a href='room_delete.php?id=$oneRoom->id'><button class='btn btn-primary'>Delete</button></a> ";
-
                         echo "</td>";
                         echo "</tr>";
                         $serial++;
@@ -108,17 +104,15 @@ if(isset($_REQUEST['search']) ) {
         <?php
         $pageMinusOne  = $page-1;
         $pagePlusOne  = $page+1;
-        if($page>$pages) Utility::redirect("view_room.php?Page=$pages");
+        if($page>$pages) Utility::redirect("trashed_room_list.php?Page=$pages");
 
-        if($page>1)  echo "<li><a href='view_room.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+        if($page>1)  echo "<li><a href='trashed_room_list.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
         for($i=1;$i<=$pages;$i++)
         {
             if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
             else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
-
         }
-        if($page<$pages) echo "<li><a href='view_room.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
-
+        if($page<$pages) echo "<li><a href='trashed_room_list.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
         ?>
 
         <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >

@@ -263,3 +263,6 @@ a.jqTransformSelectOpen {display:block;position:absolute;top:1px;right:1px;width
 	padding: 5px;
 	border-radius: 3px;
 }
+.login_success {
+	color: #0072d5;
+}

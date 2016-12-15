@@ -13,7 +13,7 @@ $status= $auth->is_registered();
 if($status){
     $_SESSION['email']=$_POST['email'];
     Message::message("
-                <div class=\"alert alert-success\">
+                <div class=\"login_success alert alert-success\">
                             <strong>Welcome!</strong> You have successfully logged in.
                 </div>");
     
@@ -21,7 +21,7 @@ if($status){
 
 }else{
     Message::message("
-                <div class=\"alert alert-danger\">
+                <div class=\"login_failed alert alert-danger\">
                             <strong>Wrong information!</strong> Please try again.
                 </div>");
 
