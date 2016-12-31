@@ -127,7 +127,7 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
 
     public function confirmedPaginator($page=0,$itemsPerPage=3){
         $start = (($page-1) * $itemsPerPage);
-        $sql = "SELECT * from booking_info  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
+        $sql = "SELECT * from booking_info  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";],;lllllllllllllllllllllllllll
         $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $arrSomeData  = $STH->fetchAll();

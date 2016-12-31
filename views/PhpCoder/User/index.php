@@ -14,7 +14,7 @@ $auth= new Auth();
 $status = $auth->prepare($_SESSION)->logged_in();
 
 if(!$status) {
-    Utility::redirect('User/Profile/signup.php');
+    Utility::redirect('/Profile/signup.php');
     return;
 }
 ?>
