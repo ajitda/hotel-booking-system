@@ -1,11 +1,10 @@
 <?php
-//if(!isset($_SESSION) )session_start();
+if(!isset($_SESSION) )session_start();
 require_once("../../../vendor/autoload.php");
 use App\BITM\PhpCoder\BlueOcean\BookingInfo;
 $obj_bookingInfo= new BookingInfo();
 $obj_bookingInfo->prepare($_GET);
 $obj_bookingInfo->confirm();
-
 require '../../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 $mail = new PHPMailer();
 $mail->IsSMTP();

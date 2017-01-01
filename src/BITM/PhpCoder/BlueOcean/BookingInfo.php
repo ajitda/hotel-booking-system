@@ -127,7 +127,7 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
 
     public function confirmedPaginator($page=0,$itemsPerPage=3){
         $start = (($page-1) * $itemsPerPage);
-        $sql = "SELECT * from booking_info  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";],;lllllllllllllllllllllllllll
+        $sql = "SELECT * from booking_info  WHERE is_deleted <> 'No' LIMIT $start,$itemsPerPage";
         $STH = $this->conn->query($sql);
         $STH->setFetchMode(PDO::FETCH_OBJ);
         $arrSomeData  = $STH->fetchAll();
@@ -140,7 +140,7 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
         $sql = "Update `booking_info` SET is_deleted=NOW() where id=".$this->id;
         $STH = $this->conn->prepare($sql);
         $STH->execute();
-        Utility::redirect('bookings.php');
+        Utility::redirect('trash_booking.php');
     }// end of trash()
 
 
@@ -161,9 +161,5 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
         $arrAllData  = $STH->fetchAll();
         return $arrAllData;
     }
-
-
-
 }
-
 ?>
