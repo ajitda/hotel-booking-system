@@ -140,7 +140,7 @@ VALUES (:customerName, :packageInfo, :checkIn, :checkOut, :rooms, :adult, :child
         $sql = "Update `booking_info` SET is_deleted=NOW() where id=".$this->id;
         $STH = $this->conn->prepare($sql);
         $STH->execute();
-        Utility::redirect('trash_booking.php');
+        Utility::redirect('bookings.php');
     }// end of trash()
 
 
