@@ -110,7 +110,7 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
         if($result){
             Message::message("
              <div class=\"alert alert-success\">
-             <strong>Success!</strong> Email verification has been successful. Please login now!
+                    <strong>Success!</strong> Email verification has been successful. Please login now!
               </div>");
         }
         else {
@@ -229,7 +229,6 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
     public function getAllKeywords()
     {
         $_allKeywords = array();
-//        $WordsArr = array();
         $sql = "SELECT * FROM `birthday` WHERE `is_deleted` ='No'";
 
         $STH = $this->DBH->query($sql);
@@ -255,7 +254,6 @@ VALUES (:firstName, :lastName, :email, :password,:phone, :address, :email_token)
                 $_allKeywords[] = trim($eachWord);
             }
         }
-        // for each search field block end
 
         // for each search field block start
         $STH = $this->DBH->query($sql);
