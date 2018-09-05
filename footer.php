@@ -3,7 +3,7 @@
     <div class="wrapper line3">
         <div class="col2">
             <h2><i>Welcome to Blue Ocean Hotel!</i></h2>
-            <p class="pad_bot1"><strong class="color2">Blue Ocean Powered by PhpCoder Team</strong><br>
+            <p class="pad_bot1"><strong class="color2">BlueOcean Powered by PhpCoderTeam</strong><br>
                 Blue Ocean Powered by PhpCoder Team </p>
             <p class="pad_bot2">
                 The Hotel Blue Ocean is the right choice for visitors who are searching for a combination of charm, peace and quiet, and a convenient position from which to explore Venice. It is a small, comfortable hotel, situated on the Canale di Cannaregio. The Derai family and their staff offer an attentive, personalized service and are always available to offer any help to guests.
@@ -52,7 +52,7 @@
                 <li><a href="#" class="normaltip" title="Twitter"><img src="resource/assets/images/icon4.jpg" alt=""></a></li>
             </ul>
         </div>
-        More Business offers at <a rel="nofollow" href="http://www.templatemonster.com/category/business-website-templates/" target="_blank">www.phpcoder_bitm.com</a>
+        More Business offers at <a rel="nofollow" href="http://www.flexibleit.net/" target="_blank">www.flexibleit.net</a>
     </footer>
     <!-- footer end -->
 </div>
@@ -64,7 +64,6 @@
             spacing : 0,
             event : 'mouseover'
         });
-
     })
 </script>
 </body>
