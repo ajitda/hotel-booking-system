@@ -11,13 +11,15 @@ class Database{
 
     public $username="root";
     public $password="";
+   public $host = 'localhost';
+   public $db_name = 'phpcoder_finalproject_b35';
     
     public function __construct()
     {
         try {
 
             # MySQL with PDO_MYSQL
-            $this->conn = new PDO("mysql:host=localhost;dbname=phpcoder_finalproject_b35", $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=$host;dbname=$db_name", $this->username, $this->password);
 
         }
         catch(PDOException $e) {
